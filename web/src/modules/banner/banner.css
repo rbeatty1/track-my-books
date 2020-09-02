@@ -1,0 +1,25 @@
+#books-page-banner{
+    display: flex;
+    align-content: center;
+    color: #332f43;
+    background: #dce5c7;
+    margin: auto;
+    border-bottom: 2.5px solid #74952e;
+}
+
+#books-page-banner ul{
+    display: flex;
+    flex-grow: 3;
+    align-content: center;
+    list-style: none;
+    justify-content: space-between;
+}
+#books-page-banner li{
+    width: 30%;
+}
+
+#books-page-banner select{
+    height: 50%;
+    flex-grow : 1;
+    margin: auto;
+}
