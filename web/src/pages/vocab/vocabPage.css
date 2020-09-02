@@ -1,0 +1,133 @@
+#vocab-page {
+	display: flex;
+    flex-flow: column;
+    overflow-y: hidden;
+}
+
+header#vocab-summary-banner{
+    display: flex;
+    justify-content: space-evenly;
+    background: #ca8597;
+    border-bottom: 2.5px solid #7b0d1e;
+}
+header#vocab-summary-banner div{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+header#vocab-summary-banner span{
+    display: flex;
+    justify-content: center;
+    margin: auto
+}
+
+header#vocab-summary-banner button{
+    height: 3rem;
+    width: 15rem;
+    border-radius : 10px;
+    margin-right: 2rem;
+    background: #ccc;
+    color: #555;
+}
+section#main-vocab-section{
+    height: 66vh;
+    display: flex;
+    overflow-y: hidden;
+}
+
+section#vocab-main.active-word{
+    height: 60vh;
+}
+#main-vocab-section section{
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+section#vocab-description{
+    height: 0;
+}
+
+section#vocab-description.active-word{
+    height: 15vh;
+}
+
+
+
+#vocab-page ul{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+#vocab-page #vocab ul{
+    align-content: flex-start;
+}
+
+#vocab-page #charts ul{
+    justify-content: center;
+    height : 10%;
+}
+#vocab-page #charts ul li:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#vocab-page #charts ul li:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#vocab-page #charts ul li{
+    padding : 10px;
+    border: thin solid #7b0d1e;
+    width: 33%;
+    height : 2rem;
+    font-size : 1.25rem;
+    text-align : center;
+    color : #000;
+}
+
+#vocab-page #charts ul li.active{
+    background-color: #f8e5ee;
+    color : #ca8597;
+    font-weight: 700;
+}
+
+#vocab-page #vocab ul li{
+    width: 20%;
+}
+#vocab-page #vocab.charts-shown ul li{
+    width: 33%;
+}
+section#vocab-groupings article.active ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#vocab-groups button.active{
+    color: white;
+    background:#7b0d1e;
+    font-weight: 700;
+}
+
+#vocab-page section.charts-shown{
+    width: 42%; 
+    display : flex;
+}
+#vocab-page section#charts.charts-hidden{
+    display : none; 
+}
+#vocab-page section#vocab.charts-hidden{
+    width : 84%; 
+}
+
+#vocab-page section#charts{
+    flex-flow : column;
+}
+#vocab-page section#charts article{
+    display: flex;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+}

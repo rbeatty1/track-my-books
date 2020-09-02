@@ -1,0 +1,18 @@
+nav{
+    display: flex;
+    justify-content: space-between;
+    color: #a9a7ba;
+    background: #dddddd;
+}
+
+nav ul{
+    width: 15%;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    margin-right: 2rem;
+}
+
+nav ul li, nav h3{
+    cursor: pointer;
+}

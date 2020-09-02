@@ -1,0 +1,38 @@
+
+aside#vocab-filters{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    overflow-y : scroll;
+}
+
+aside#vocab-filters select{
+    min-height: 2.5em;
+}
+
+aside#vocab-filters ul{
+    list-style : none;
+    width: 75%;
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    padding-left: 0;
+    margin : 3rem auto;
+}
+aside#vocab-filters button{
+    color: #ca8597;
+    background: #f8e5ee;
+    width: 100%;
+    margin: .2em auto;
+    border: none;
+    padding: 1em 0;
+    border-radius: 5px;
+}
+
+
+aside#vocab-filters button.active{
+    color: white;
+    background:#7b0d1e;
+    font-weight: 700;
+}
