@@ -1,11 +1,12 @@
 import requests
+from connections import connections as c
 
 class words():
     endpoint = "https://wordsapiv1.p.rapidapi.com/words/{0}"
 
     headers= {
         'x-rapidapi-host': "wordsapiv1.p.rapidapi.com",
-        'x-rapidapi-key': "8e9a0d976cmsh009ba69f32df17fp193c74jsne29de1655add"
+        'x-rapidapi-key': c.RAPID_API_KEY
     }
 
     def search(self, value):

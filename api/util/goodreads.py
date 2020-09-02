@@ -1,12 +1,12 @@
 from urllib import request
 from bs4 import BeautifulSoup as soup
-
+from connections import connections as c
 
 class goodreads():
-    dev_key = '0vMDqHxlYNBgZ8XT5JJqsA'
-    secret_key = 'Irz9qaWBmSbUtlrLKKIprdlKf8hRSvqLsRXZlAUGks'
-    user_id = '63457554'
-
+    user_id = c.GR_USER_ID
+    dev_key = c.GR_DEV_KEY
+    secret_key = c.GR_SECRET_KEY
+    
     def get_shelf_books(self, shelf):
         url = "https://www.goodreads.com/review/list/{0}.xml?key={1}&v=2&shelf={2}&per_page=200".format(
             self.user_id,
