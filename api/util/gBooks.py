@@ -1,10 +1,10 @@
 import requests
-
+from connections import connections as c
 class gbooks():
-    googleapikey="AIzaSyCQl-frpAHu2fWm96umaGYXw2d1kCrR5jo"
+    google_api_key = c.GBOOKS_API_KEY
 
     def search(self, value):
-        params = {"q":value, 'key':self.googleapikey}
+        params = {"q":value, 'key': self.google_api_key}
         r = requests.get(url="https://www.googleapis.com/books/v1/volumes", params=params)
         rj = r.json()
         if rj["items"] is not None and len(rj["items"]) > 0:
