@@ -5,12 +5,11 @@
 }
 
 section#main-vocab-section{
-    height: 66vh;
     display: flex;
     overflow-y: hidden;
 }
 
-section#vocab-main.active-word{
+section#main-vocab-section.active-word{
     height: 60vh;
 }
 #main-vocab-section section{
@@ -92,7 +91,7 @@ section#vocab-groupings article.active ul{
 #vocab-page section#charts.charts-hidden{
     display : none; 
 }
-#vocab-page section#vocab.charts-hidden{
+#vocab-page section#vocab-word-list.charts-hidden{
     width : 84%; 
 }
 

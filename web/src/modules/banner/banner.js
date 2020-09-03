@@ -83,7 +83,6 @@ class Banner{
                         <strong>Average Word Length</strong> : ${Math.floor(calcAvgWrdLength)}
                     </li>
                 </ul>
-                <button type="button" data-event-name="${pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW}" data-chart-state="${this.pageState.showCharts ? 0 : 1}"> ${this.pageState.showCharts ? "Hide" : "Show"} Charts </button>
             </header>`
         
         }

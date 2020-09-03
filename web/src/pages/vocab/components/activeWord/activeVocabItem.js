@@ -1,23 +1,17 @@
 import { properCapitalization } from "../../../../util/util.js";
-// import pubSub from "../../util/pubSub.js";
 import './activeVocabItem.css';
-import pubSub from "../../../../util/pubSub.js";
 
 export default class ActiveVocabItem{
     constructor(data){
         this.data = data;
         this.selector = "active-word-container";
 
-        this.updateActiveWord = this.updateActiveWord.bind(this);
-
-        pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_ACTIVE_WORD);
-        pubSub.subscribe(pubSub.actions.VOCAB.SET_ACTIVE_WORD, this.updateActiveWord);
-        this.node = this.createHTMLString();
+        this.node = this.render();
 
         return this;
     }
 
-    createHTMLString(){
+    render(){
         let htmlString = "";
         if (!this.data){
             htmlString = `
@@ -48,10 +42,5 @@ export default class ActiveVocabItem{
         }
         return htmlString;
 
-    }
-
-    updateActiveWord(activeWord){
-        this.data = activeWord;
-        document.getElementById(this.selector).outerHTML = this.createHTMLString();
     }
 }
