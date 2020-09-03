@@ -1,0 +1,44 @@
+#books-page-banner{
+    display: flex;
+    align-content: center;
+    color: #332f43;
+    background: #dce5c7;
+    margin: auto;
+    border-bottom: 2.5px solid #74952e;
+}
+
+.page-banner ul{
+    display: flex;
+    flex-grow: 3;
+    align-content: center;
+    list-style: none;
+    justify-content: space-between;
+}
+#books-page-banner li{
+    width: 30%;
+}
+
+#books-page-banner select{
+    height: 50%;
+    flex-grow : 1;
+    margin: auto;
+}
+
+#vocab-page-banner{
+    display: flex;
+    justify-content: space-evenly;
+    background: #ca8597;
+    border-bottom: 2.5px solid #7b0d1e;
+}
+#vocab-page-banner ul li{
+    width: 50%;
+}
+
+#vocab-page-banner button{
+    height: 3rem;
+    width: 15rem;
+    border-radius : 10px;
+    margin-right: 2rem;
+    background: #ccc;
+    color: #555;
+}

@@ -5,35 +5,30 @@ import pubSub from "../../util/pubSub.js";
 import ActiveVocabItem from "./components/activeWord/activeVocabItem.js";
 import { Charts, chartTypesRef } from "../../modules/charts/charts.js"
 import { VocabFilters } from "./components/filters/vocabFilters.js";
+import { BannerPageTypeMap, Banner } from "../../modules/banner/banner.js";
 
 
 const createHTML = state =>{
-    const createVocabBannerHTMLString = (filteredData) =>{
-        const vocabCountSection = `<span><h3>Vocab Count :</h3><h4>${filteredData.length}</h4></span>`;
-        let calcAvgWrdLength = filteredData.reduce((sum, wordData) => sum + wordData.word.length, 0) / filteredData.length
-        const avgWrdLengthSection = `<span><h3>Average Word Length :</h3><h4>${Math.floor(calcAvgWrdLength)}</h4></span>`
-    
-        return `<header id="vocab-summary-banner">
-            <div id="page-stats">
-                ${vocabCountSection}
-                ${avgWrdLengthSection}
-            </div>
-            <div>
-            <button type="button" data-event-name="${pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW}" data-chart-state="${state.showCharts ? 0 : 1}"> ${state.showCharts ? "Hide" : "Show"} Charts </button>
-            </div>
-        </header>`
-    }
-
     let filteredWordList = state.data.filter( x =>{
         var filterProp = state.filters.type.toLowerCase();
         var filterVal = state.filters.value.toLowerCase();
 
         return (!x[filterProp] || filterVal === "all") || x[filterProp].toLowerCase() === filterVal;
     });
-    let vocabBannerHTML = createVocabBannerHTMLString(filteredWordList);
 
+    let bannerProps = {
+        pageState : {
+            pageName : BannerPageTypeMap.VOCAB,
+            filters : "none",
+            showCharts : state.showCharts
+        },
+        data : {
+            raw : state.data,
+            filtered : filteredWordList
+        }
+    }
     let HTMLDefinitionString = `
-        ${vocabBannerHTML}
+        ${ new Banner( bannerProps ).node }
         <section id="main-vocab-section">
             ${ new VocabFilters(
                 {

@@ -1,12 +1,12 @@
-#vocab-page ul li:hover{
+#vocab-word-list ul li:hover{
     cursor: pointer;
     color: #9a9a9a
 }
-#vocab-page ul li.active{
+#vocab-word-list ul li.active{
     font-weight: 700;
     font-size: 1.1rem;
     color: red;
 }
-#vocab-page ul li.hidden{
+#vocab-word-list ul li.hidden{
     display: none;
 }

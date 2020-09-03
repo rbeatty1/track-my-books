@@ -1,22 +1,3 @@
-section#books-banner-section{
-    display: flex;
-    justify-content: space-evenly;
-    align-content: center;
-    color: #332f43;
-    background: #dce5c7;
-    margin: auto;
-    border-bottom: 2.5px solid #74952e;
-}
-
-#books-banner-section div{
-    display: flex;
-    align-content: center;
-}
-
-#books-genre-select{
-    height: 50%;
-    margin: auto;
-}
 
 #books-tile-section{
     display: flex;
