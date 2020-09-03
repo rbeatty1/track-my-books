@@ -1,40 +1,9 @@
 import "./booksPage.css";
-import {getTargetInfo, properCapitalization, refreshNode} from "../../util/util.js"
-import BookTile from "./components/tiles/bookTile.js";
+import {getTargetInfo, refreshNode} from "../../util/util.js"
 import pubSub from "../../util/pubSub";
 import { Banner, BannerPageTypeMap } from "../../modules/banner/banner";
+import { BookTileSection } from "./components/bookTileSection";
 
-
-const createHTML = component =>{
-    let books = component.data;
-    let filteredBooks = books.filter( x => component.genre == "All" || x.genre === component.genre)
-    let bannerProps = { 
-        pageState : {
-            pageName : BannerPageTypeMap.BOOKS,
-            filters : {
-                genre : component.genre 
-            }
-        },
-        data : { 
-            filtered : filteredBooks,
-            raw : component.data
-        } 
-    }
-
-    let bookTiles = filteredBooks.map( x => new BookTile(x).node.outerHTML).join("");
-    let booksPage = `${new Banner( bannerProps ).node}
-    <section id="books-tile-section">
-        ${bookTiles}
-    </section>
-    `
-
-    let booksPageContainer = document.createElement("div");
-    booksPageContainer.id = "books-page";
-    booksPageContainer.insertAdjacentHTML("afterbegin", booksPage)
-
-    return booksPageContainer;
-
-};
 class BooksPage {
     constructor(props){
         this.api = "http://localhost:5000/api/v1/books";
@@ -60,10 +29,32 @@ class BooksPage {
     }
 
     render(){
-        let node = createHTML(this);
-        node.addEventListener("change", this.changeEventDelegation)
-        node.addEventListener("click", this.clickEventDelegation)
-        return node;
+        let filteredBooks = this.data.filter( x => this.genre == "All" || x.genre === this.genre)
+        let bannerProps = { 
+            pageState : {
+                pageName : BannerPageTypeMap.BOOKS,
+                filters : {
+                    genre : this.genre 
+                }
+            },
+            data : { 
+                filtered : filteredBooks,
+                raw : this.data
+            } 
+        };
+    
+        let booksPage = `
+        ${new Banner( bannerProps ).node}
+        ${new BookTileSection( { data : filteredBooks } ).node}
+        `
+    
+        let booksPageContainer = document.createElement("div");
+        booksPageContainer.id = "books-page";
+        booksPageContainer.insertAdjacentHTML("afterbegin", booksPage)
+    
+        booksPageContainer.addEventListener("change", this.changeEventDelegation)
+        booksPageContainer.addEventListener("click", this.clickEventDelegation)
+        return booksPageContainer;
 
     }
 
@@ -78,9 +69,9 @@ class BooksPage {
         if (!info.eventName) return;
         if (info.eventName === pubSub.actions.BOOKS.OPEN_VOCAB_PAGE){
             let id = info.target.dataset.bid;
-            let book = _self.data.filter( x=> x.id === id);
-            if (book.length > 0){
-                let title = book[0].title;
+            let book = _self.data.find( x=> x.id === id);
+            if (book){
+                let title = book.title;
                 let vocabFilter = {type : "book", value : title.toLowerCase()}
                 let navProps = {
                     navEvent : pubSub.actions.NAVIGATION.VOCAB,
@@ -104,9 +95,6 @@ class BooksPage {
             refreshNode(this);
         }
     }
-
-
-
 }
 export {
     BooksPage
