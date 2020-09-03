@@ -14,7 +14,7 @@ class WordList{
 
     render(){
         
-        return `<section id="vocab" class="${this.chartsShown ? 'charts-shown' : 'charts-hidden'}">
+        return `<section id="vocab-word-list" class="${this.chartsShown ? 'charts-shown' : 'charts-hidden'}">
             <ul>
                 ${ this.data.map(w => new VocabListItem( { data : w, active : w.word === this.activeWord}).node).join(" ") }
             </ul>

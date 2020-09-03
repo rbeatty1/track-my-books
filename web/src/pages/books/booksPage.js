@@ -8,9 +8,21 @@ import { Banner, BannerPageTypeMap } from "../../modules/banner/banner";
 const createHTML = component =>{
     let books = component.data;
     let filteredBooks = books.filter( x => component.genre == "All" || x.genre === component.genre)
+    let bannerProps = { 
+        pageState : {
+            pageName : BannerPageTypeMap.BOOKS,
+            filters : {
+                genre : component.genre 
+            }
+        },
+        data : { 
+            filtered : filteredBooks,
+            raw : component.data
+        } 
+    }
 
     let bookTiles = filteredBooks.map( x => new BookTile(x).node.outerHTML).join("");
-    let booksPage = `${new Banner( { page : BannerPageTypeMap.BOOKS, data : { filtered : filteredBooks, raw : component.data}, filters : { genre : component.genre } }).node}
+    let booksPage = `${new Banner( bannerProps ).node}
     <section id="books-tile-section">
         ${bookTiles}
     </section>

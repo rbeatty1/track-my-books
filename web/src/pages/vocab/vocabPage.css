@@ -4,32 +4,6 @@
     overflow-y: hidden;
 }
 
-header#vocab-summary-banner{
-    display: flex;
-    justify-content: space-evenly;
-    background: #ca8597;
-    border-bottom: 2.5px solid #7b0d1e;
-}
-header#vocab-summary-banner div{
-    width: 50%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-header#vocab-summary-banner span{
-    display: flex;
-    justify-content: center;
-    margin: auto
-}
-
-header#vocab-summary-banner button{
-    height: 3rem;
-    width: 15rem;
-    border-radius : 10px;
-    margin-right: 2rem;
-    background: #ccc;
-    color: #555;
-}
 section#main-vocab-section{
     height: 66vh;
     display: flex;
@@ -62,7 +36,7 @@ section#vocab-description.active-word{
     list-style: none;
 }
 
-#vocab-page #vocab ul{
+#vocab-page #vocab-word-list ul{
     align-content: flex-start;
 }
 
@@ -94,7 +68,7 @@ section#vocab-description.active-word{
     font-weight: 700;
 }
 
-#vocab-page #vocab ul li{
+#vocab-page #vocab-word-list ul li{
     width: 20%;
 }
 #vocab-page #vocab.charts-shown ul li{

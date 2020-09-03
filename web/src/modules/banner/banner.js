@@ -1,5 +1,4 @@
 import './banner.css';
-import { properCapitalization } from '../../util/util';
 import pubSub from '../../util/pubSub';
 
 const pageBannerTypeMap = {
@@ -9,9 +8,8 @@ const pageBannerTypeMap = {
 
 class Banner{
     constructor(props){
-        this.activePage = props.page;
+        this.pageState = props.pageState;
         this.data = props.data;
-        this.filters = props.filters;
 
 
         this.render = this.render.bind(this);
@@ -70,19 +68,34 @@ class Banner{
             // get book genres
             const bookGenres = allBooks.reduce(getBookGenres, []).sort()
 
-            return `${createSummaryInfoSection()}${createBookGenreFilter(this.filters)}`
+            return `${createSummaryInfoSection()}${createBookGenreFilter(this.pageState.filters)}`
         }
 
         const createVocabBannerHtml = () =>{
-            const createSummaryInfoSection = () => {}
+            let calcAvgWrdLength = this.data.filtered.reduce((sum, wordData) => sum + wordData.word.length, 0) / this.data.filtered.length
+        
+            return `
+                <ul>
+                    <li>
+                        <strong>Vocabulary Word Count</strong> : ${this.data.filtered.length}
+                    </li>
+                    <li>
+                        <strong>Average Word Length</strong> : ${Math.floor(calcAvgWrdLength)}
+                    </li>
+                </ul>
+                <button type="button" data-event-name="${pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW}" data-chart-state="${this.pageState.showCharts ? 0 : 1}"> ${this.pageState.showCharts ? "Hide" : "Show"} Charts </button>
+            </header>`
+        
         }
 
-        var banner = document.createElement("header");
+        let bannerId = this.pageState.pageName === pageBannerTypeMap.BOOKS ? "books-page-banner" : 
+            this.pageState.pageName === pageBannerTypeMap.VOCAB ? "vocab-page-banner" :
+            "";
+        let bannerInnerHTML = this.pageState.pageName === pageBannerTypeMap.BOOKS ? createBooksBannerHtml() : 
+            this.pageState.pageName === pageBannerTypeMap.VOCAB ? createVocabBannerHtml() :
+            "";
 
-        banner.id = this.activePage === pageBannerTypeMap.BOOKS ? "books-page-banner" : "vocab-page-banner";
-        banner.innerHTML = this.activePage === pageBannerTypeMap.BOOKS ? createBooksBannerHtml() : createVocabBannerHtml();
-
-        return banner.outerHTML;
+        return `<header class="page-banner" id="${bannerId}">${bannerInnerHTML}</header>`
     }
 }
 
