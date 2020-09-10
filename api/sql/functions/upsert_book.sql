@@ -1,6 +1,6 @@
-﻿-- Function: public.upsert_book(text, text, text, text, text, text, integer)
+﻿-- Function: public.upsert_book(text, text, text, text, date, date, integer)
 
--- DROP FUNCTION public.upsert_book(text, text, text, text, text, text, integer);
+-- DROP FUNCTION public.upsert_book(text, text, text, text, date, date, integer);
 
 CREATE OR REPLACE FUNCTION public.upsert_book(
     upsert_id text DEFAULT NULL::text,
@@ -15,12 +15,15 @@ $BODY$
 	BEGIN
 		INSERT INTO public.books (id, title, author, genre, start_dt, end_dt, pages)
 		VALUES (upsert_id, upsert_title, upsert_author, upsert_genre, upsert_start, upsert_end, upsert_pages)
-		ON CONFLICT (title)
+		ON CONFLICT (id)
 		DO
 			UPDATE set
-				title = upsert_title,
+        title = upsert_title,
+				author = upsert_author,
+				genre = upsert_genre,
 				start_dt = upsert_start,
-				end_dt = upsert_end;
+				end_dt = upsert_end,
+				pages = upsert_pages;
 	END;
 $BODY$
   LANGUAGE plpgsql VOLATILE
