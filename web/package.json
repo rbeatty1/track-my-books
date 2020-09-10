@@ -23,8 +23,6 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
-    "d3": "^3.5.17",
-    "d3-array": "^2.4.0",
-    "nvd3": "^1.8.6"
+    "tui-chart": "^3.11.2"
   }
 }

@@ -13,8 +13,8 @@ class VocabPage {
         this.data = null;
         this.baseApi = 'http://localhost:5000/api/v1/vocab';
         this.active = null;
-        this.showCharts = false;
-        this.activeChart = chartTypesRef.VOCAB.VOCAB_TIME;
+        this.showCharts = true;
+        this.activeChart = chartTypesRef.VOCAB.VOCAB_TIME.code;
         
         this.render = this.render.bind(this);
         this.setFilterValue = this.setFilterValue.bind(this);
@@ -38,7 +38,6 @@ class VocabPage {
 
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_ACTIVE_WORD);
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_FILTER_TYPE);
-        pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_FILTER_VALUE);
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW);
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.TOGGLE_CHART_TYPE);
 
@@ -47,10 +46,6 @@ class VocabPage {
             this.setFilterType
         )
 
-        pubSub.subscribe(
-            pubSub.actions.VOCAB.SET_FILTER_VALUE,
-            this.setFilterValue
-        )
         pubSub.subscribe(
             pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW,
             this.toggleCharts
@@ -102,15 +97,18 @@ class VocabPage {
                     ).node 
                 }
                 ${
-                    new Charts(
-                        {
-                            page : "vocab",
-                            show : this.showCharts,
-                            activeChart : this.activeChart,
-                            groupType : this.filters.type,
-                            activeFilters : this.filters
-                        }
-                    ).node
+                    this.showCharts ? 
+                        new Charts(
+                            {
+                                page : "VOCAB",
+                                show : this.showCharts,
+                                activeChart : this.activeChart,
+                                groupType : this.filters.type,
+                                activeFilters : this.filters,
+                                data : this.data
+                            }
+                        ).node :
+                        ""
                 }
             </section>
             ${new ActiveVocabItem(this.active).node}
@@ -121,7 +119,7 @@ class VocabPage {
         vocabPageContainer.insertAdjacentHTML("afterbegin", HTMLDefinitionString)
     
         vocabPageContainer.addEventListener("click", this.delegateClickEvents );
-        vocabPageContainer.addEventListener("change", this.delegateClickEvents );
+        vocabPageContainer.addEventListener("change", this.delegateChangeEvents );
         return vocabPageContainer; 
     }
 
@@ -137,7 +135,6 @@ class VocabPage {
         this.filters.type = filterType
         this.filters.value = "all";
         refreshNode(this);
-
     }
 
     setFilterValue(filterValue){
@@ -165,11 +162,8 @@ class VocabPage {
         if (!eventName) return;
 
         if (eventName === pubSub.actions.VOCAB.SET_FILTER_VALUE){
-            pubSub.publish(
-                pubSub.actions.VOCAB.SET_FILTER_VALUE,
-                target.value
-            );
-            refreshNode(this);
+            pubSub.publish(pubSub.actions.VOCAB.SET_FILTER_VALUE, target.value);
+            this.setFilterValue(target.value);
         }
 
         if (eventName === pubSub.actions.VOCAB.TOGGLE_ACTIVE_WORD){
@@ -206,10 +200,7 @@ class VocabPage {
         if (!eventName) return;
     
         if (eventName === pubSub.actions.VOCAB.SET_FILTER_TYPE){
-            pubSub.publish(
-                pubSub.actions.VOCAB.SET_FILTER_TYPE,
-                target.value
-            );
+            this.setFilterType(target.value);
         }
 
     }

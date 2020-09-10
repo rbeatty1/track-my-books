@@ -7,10 +7,11 @@
 section#main-vocab-section{
     display: flex;
     overflow-y: hidden;
+    height: 80vh;
 }
 
 section#main-vocab-section.active-word{
-    height: 60vh;
+    height: 70vh;
 }
 #main-vocab-section section{
     height: 100%;
@@ -39,34 +40,6 @@ section#vocab-description.active-word{
     align-content: flex-start;
 }
 
-#vocab-page #charts ul{
-    justify-content: center;
-    height : 10%;
-}
-#vocab-page #charts ul li:first-child{
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-#vocab-page #charts ul li:last-child{
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-#vocab-page #charts ul li{
-    padding : 10px;
-    border: thin solid #7b0d1e;
-    width: 33%;
-    height : 2rem;
-    font-size : 1.25rem;
-    text-align : center;
-    color : #000;
-}
-
-#vocab-page #charts ul li.active{
-    background-color: #f8e5ee;
-    color : #ca8597;
-    font-weight: 700;
-}
-
 #vocab-page #vocab-word-list ul li{
     width: 20%;
 }
@@ -93,14 +66,4 @@ section#vocab-groupings article.active ul{
 }
 #vocab-page section#vocab-word-list.charts-hidden{
     width : 84%; 
-}
-
-#vocab-page section#charts{
-    flex-flow : column;
-}
-#vocab-page section#charts article{
-    display: flex;
-    height: 90%;
-    justify-content: center;
-    align-items: center;
 }
