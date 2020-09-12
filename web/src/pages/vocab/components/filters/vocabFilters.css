@@ -28,6 +28,7 @@ aside#vocab-filters button{
     border: none;
     padding: 1em 0;
     border-radius: 5px;
+    cursor : pointer;
 }
 
 

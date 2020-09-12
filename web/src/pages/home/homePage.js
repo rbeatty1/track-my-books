@@ -4,6 +4,14 @@ import pubSub from '../../util/pubSub';
 class HomePage{
     constructor(){
         this.sections = {
+            BOOKS : {
+                title : "Books",
+                desc : [
+                    "Take a look at all the books (since I've started to track them, that is!) I've read!",
+                    "The information displayed is a combination of data stored on my Kindle Paperwhite and on my Goodreads page.",
+                    "<strong>Coming Soon :</strong> Data visualizations!"
+                ]
+            },
             VOCAB: {
                 title : "Vocabulary",
                 desc : [
@@ -12,14 +20,6 @@ class HomePage{
                     "Take a look at what words I've come across that I've needed to look up, and visualize some trends about them."
                 ]
             },
-            BOOKS : {
-                title : "Books",
-                desc : [
-                    "Take a look at all the books (since I've started to track them, that is!) I've read!",
-                    "The information displayed is a combination of data stored on my Kindle Paperwhite and on my Goodreads page.",
-                    "<strong>Coming Soon :</strong> Data visualizations!"
-                ]
-            }
         }
         
         this.render = this.render.bind(this);

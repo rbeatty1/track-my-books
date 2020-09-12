@@ -1,0 +1,28 @@
+#charts{
+    width : 42%;
+}
+
+#charts article{
+    width: 100%;
+}
+
+#charts .collapsible-chart-banner{
+    width : 100%;
+    text-align : left;
+    border-radius : 5px;
+    box-shadow: none;
+    border : none;
+    margin : 10px 0;
+    display : flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#charts .collapsible-chart-banner.active{
+    background : #777;
+    color : white
+}
+
+#charts .collapsible-chart-banner svg{
+    margin-right: 0.5rem;
+}

@@ -12,7 +12,7 @@ class VocabPage {
         this.filters = props || { type : "genre", value : "all" }
         this.data = null;
         this.baseApi = 'http://localhost:5000/api/v1/vocab';
-        this.active = null;
+        this.activeWord = null;
         this.showCharts = true;
         this.activeChart = chartTypesRef.VOCAB.VOCAB_TIME.code;
         
@@ -39,7 +39,7 @@ class VocabPage {
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_ACTIVE_WORD);
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.SET_FILTER_TYPE);
         pubSub.clearSubscriptions(pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW);
-        pubSub.clearSubscriptions(pubSub.actions.VOCAB.TOGGLE_CHART_TYPE);
+        pubSub.clearSubscriptions(pubSub.actions.MISC.TOGGLE_CHART);
 
         pubSub.subscribe(
             pubSub.actions.VOCAB.SET_FILTER_TYPE,
@@ -51,8 +51,13 @@ class VocabPage {
             this.toggleCharts
         )
         pubSub.subscribe(
-            pubSub.actions.VOCAB.TOGGLE_CHARTS_VIEW,
+            pubSub.actions.MISC.TOGGLE_CHART,
             this.toggleChartType
+        )
+
+        pubSub.subscribe(
+            pubSub.actions.VOCAB.SET_FILTER_VALUE,
+            this.setFilterValue
         )
 
         return constructorPromise;
@@ -79,7 +84,7 @@ class VocabPage {
         }
         let HTMLDefinitionString = `
             ${ new Banner( bannerProps ).node }
-            <section id="main-vocab-section" class="${this.active ? "active-word" : ""}">
+            <section id="main-vocab-section" class="${this.activeWord ? "active-word" : ""}">
                 ${ new VocabFilters(
                     {
                         data : this.data,
@@ -91,32 +96,33 @@ class VocabPage {
                     new WordList(
                         { 
                             data : filteredWordList,
-                            activeWord : this.active,
+                            activeWord : this.activeWord,
                             chartsShown : this.showCharts
                         } 
                     ).node 
                 }
-                ${
-                    this.showCharts ? 
-                        new Charts(
-                            {
-                                page : "VOCAB",
-                                show : this.showCharts,
-                                activeChart : this.activeChart,
-                                groupType : this.filters.type,
-                                activeFilters : this.filters,
-                                data : this.data
-                            }
-                        ).node :
-                        ""
-                }
             </section>
-            ${new ActiveVocabItem(this.active).node}
+            ${new ActiveVocabItem(this.activeWord).node}
             `;
     
         let vocabPageContainer = document.createElement("div");
         vocabPageContainer.id = "vocab-page";
         vocabPageContainer.insertAdjacentHTML("afterbegin", HTMLDefinitionString)
+
+        if(this.showCharts){
+            vocabPageContainer.querySelector("#main-vocab-section").insertAdjacentElement("beforeend",
+            new Charts(
+                {
+                    page : "VOCAB",
+                    show : this.showCharts,
+                    activeChart : this.activeChart,
+                    activeWord : this.activeWord,
+                    activeFilters : this.filters,
+                    data : this.data
+                }
+            ).node
+            )
+        }
     
         vocabPageContainer.addEventListener("click", this.delegateClickEvents );
         vocabPageContainer.addEventListener("change", this.delegateChangeEvents );
@@ -134,13 +140,19 @@ class VocabPage {
     setFilterType(filterType){
         this.filters.type = filterType
         this.filters.value = "all";
+        if(filterType == "book"){
+            this.activeChart = chartTypesRef.VOCAB.VOCAB_GROUP.code;
+        }
+        else{
+            this.activeChart == chartTypesRef.VOCAB.VOCAB_TIME.code;
+        }
         refreshNode(this);
     }
 
     setFilterValue(filterValue){
         this.filters.value = filterValue;
-        if(filterValue !== "all" && this.active && this.active[this.filters.type] !== filterValue){
-            this.active = null;
+        if(filterValue !== "all" && this.activeWord && this.activeWord[this.filters.type] !== filterValue){
+            this.activeWord = null;
         }
         refreshNode(this);
     }
@@ -151,7 +163,7 @@ class VocabPage {
     }
 
     toggleChartType(chartTypeCode){
-        this.activeChart = parseInt(chartTypeCode, 10);
+        this.activeChart = this.activeChart == chartTypeCode ? null : parseInt(chartTypeCode, 10);
         refreshNode(this);
     }
 
@@ -162,14 +174,13 @@ class VocabPage {
         if (!eventName) return;
 
         if (eventName === pubSub.actions.VOCAB.SET_FILTER_VALUE){
-            pubSub.publish(pubSub.actions.VOCAB.SET_FILTER_VALUE, target.value);
             this.setFilterValue(target.value);
         }
 
         if (eventName === pubSub.actions.VOCAB.TOGGLE_ACTIVE_WORD){
             let activeWord = this.data.find( w => w.id == target.dataset.wordId);
             if (!activeWord) return;
-            this.active = this.active && this.active.id === activeWord.id ? null : activeWord;
+            this.activeWord = this.activeWord && this.activeWord.id === activeWord.id ? null : activeWord;
             refreshNode(this);
         }
 
