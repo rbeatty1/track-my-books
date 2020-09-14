@@ -221,6 +221,7 @@ class Charts{
         this.highlightSelectedWord = this.highlightSelectedWord.bind(this);
 
         this.groupedData = this.groupData();
+        baseColors[this.groupedData.series.length] = baseColors[this.groupedData.series.length] ? baseColors[this.groupedData.series.length] : randomColorGenerator(this.groupedData.series.length);
         this.node = this.render();
         this.highlightSeries();
 
@@ -456,9 +457,10 @@ class Charts{
         })
         let activeChart = this.getChartOptions(this.chart);
 
+        let colors = baseColors[this.groupedData.series.length];
         activeChart.theme.def.series.colors = 
-            this.seriesValue == "all" ? baseColors[this.groupedData.series.length] : 
-            baseColors[this.groupedData.series.length].map( (c,i)=> i == legendIdx ? c : hexToRGB(c, .15));
+            this.seriesValue == "all" ? colors : 
+            colors.map( (c,i)=> i == legendIdx ? c : hexToRGB(c, .15));
         this.node = this.render();
     }
 

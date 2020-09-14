@@ -82,6 +82,12 @@
     color: #e2c044;
 }
 
+#book-context.thriller{
+    border-right: 5px solid #74226C;
+}
+#book-context.thriller strong{
+    color: #74226C;
+}
 #book-context.non-fiction,
 #book-context.other{
     border-right: 5px solid #999;
