@@ -23,6 +23,7 @@
     "webpack-dev-server": "^3.8.2"
   },
   "dependencies": {
+    "@primer/octicons": "^11.0.0",
     "tui-chart": "^3.11.2"
   }
 }

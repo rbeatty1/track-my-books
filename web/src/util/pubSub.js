@@ -21,7 +21,9 @@ constructor(){
                 OPEN_VOCAB_PAGE: "bookPage_prefilteredVocabPage"
             },
             HOME : {},
-            MISC : {}
+            MISC : {
+                TOGGLE_CHART : "chartModule_toggleChart"
+            }
         }
 
         this.publish = this.publish.bind(this);
