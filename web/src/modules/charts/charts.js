@@ -221,7 +221,7 @@ class Charts{
         this.highlightSelectedWord = this.highlightSelectedWord.bind(this);
 
         this.groupedData = this.groupData();
-        baseColors[this.groupedData.series.length] = baseColors[this.groupedData.series.length] ? baseColors[this.groupedData.series.length] : randomColorGenerator(this.groupedData.series.length);
+        baseColors[this.groupedData.series.length] = baseColors[this.groupedData.series.length] || randomColorGenerator(this.groupedData.series.length)
         this.node = this.render();
         this.highlightSeries();
 
