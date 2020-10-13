@@ -1,9 +1,13 @@
-
+#books-page{
+    height : 100%
+}
 #books-tile-section{
     display: flex;
     justify-content: space-around;
     align-content: space-between;
-    width: 95%;
-    flex-wrap: wrap; 
+    width: 100%;
+    flex-wrap: wrap;
     margin: 0 auto;
+    overflow-y: scroll;
+    height: 85%;
 }

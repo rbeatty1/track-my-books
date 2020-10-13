@@ -1,10 +1,15 @@
 nav{
     display: flex;
     justify-content: space-between;
-    color: #a9a7ba;
-    background: #dddddd;
+    color: #ECFFF8;
+    background: #247BA0;
+    position : sticky;
+    top : 0;
 }
-
+nav h3{ 
+    font-family: 'Bebas Neue', cursive;
+    margin-left : 2rem;
+} 
 nav ul{
     width: 15%;
     display: flex;
@@ -15,4 +20,11 @@ nav ul{
 
 nav ul li, nav h3{
     cursor: pointer;
+}
+
+@media only screen and (max-width : 700px){
+    
+nav ul{
+    width: 50%
+}
 }

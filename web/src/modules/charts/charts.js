@@ -121,6 +121,7 @@ const chartTypesRef = {
                 },
                 tooltip : {
                     template : function(category, data, idx){
+                        console.log(category);
                         var tooltip = document.createElement("div")
                         tooltip.style.width = "200px";
                         tooltip.style.padding = "10px";
@@ -221,7 +222,9 @@ class Charts{
         this.highlightSelectedWord = this.highlightSelectedWord.bind(this);
 
         this.groupedData = this.groupData();
-        baseColors[this.groupedData.series.length] = baseColors[this.groupedData.series.length] || randomColorGenerator(this.groupedData.series.length)
+        if (this.groupedData.series){
+            baseColors[this.groupedData.series.length] = baseColors[this.groupedData.series.length] || randomColorGenerator(this.groupedData.series.length)
+        }
         this.node = this.render();
         this.highlightSeries();
 
