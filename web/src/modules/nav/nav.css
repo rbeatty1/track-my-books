@@ -5,6 +5,7 @@ nav{
     background: #247BA0;
     position : sticky;
     top : 0;
+    height : 7.5%
 }
 nav h3{ 
     font-family: 'Bebas Neue', cursive;
