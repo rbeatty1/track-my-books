@@ -1,30 +1,21 @@
-﻿-- Function: public.select_books(integer, text, text, text)
+﻿-- Function: public.select_books(text, text, text, text)
 
--- DROP FUNCTION public.select_books(integer, text, text, text);
+--DROP FUNCTION public.select_books(text, text, text, text);
 
 CREATE OR REPLACE FUNCTION public.select_books(
     IN select_id text DEFAULT NULL::integer,
     IN select_title text DEFAULT NULL::text,
     IN select_author text DEFAULT NULL::text,
     IN select_genre text DEFAULT NULL::text)
-  RETURNS TABLE(
-	id text
-	,title text
-	,author text
-	,genre text
-	,start_date text
-	,end_date text
-	,pages integer
-	,word_count bigint
-) AS
+  RETURNS TABLE(id text, title text, author text, genre text, start_dt date, end_dt date, pages integer, word_count bigint) AS
 $BODY$
 	SELECT
 		b.id
 		,title
 		,author
 		,genre
-		,start_date
-		,end_date
+		,start_dt
+		,end_dt
 		,pages
 		,COALESCE(COUNT(DISTINCT(w.id)),0) as word_count
 	FROM books b
@@ -42,7 +33,7 @@ $BODY$
 		,genre
 		,pages
 	ORDER BY
-		b.end_dt DESC;
+		case when b.end_dt is NULL then 1 else 0 end, b.end_dt DESC;
 		
 $BODY$
   LANGUAGE sql VOLATILE
