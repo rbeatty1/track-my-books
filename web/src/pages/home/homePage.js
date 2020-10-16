@@ -1,6 +1,6 @@
 import './homePage.css'
-import pubSub from '../../util/pubSub';
 import * as i from '@primer/octicons';
+import SPARouter from '../../router';
 
 class HomePage{
     constructor(){
@@ -34,7 +34,7 @@ class HomePage{
             return Object.keys(sections).map( s =>{
                 var sectionInfo = sections[s]
                 return `
-                    <button type='button' data-event-name="${pubSub.actions.NAVIGATION[s]}">
+                    <button type='button' data-page-name="#${s.toLowerCase()}">
                         <h3>${sectionInfo.title}</h3>
                         ${s == 'VOCAB' ? i.checklist.toSVG( { width : 75, height : 75}) : i.book.toSVG( { width : 75, height : 75}) }
                     </button>
@@ -59,14 +59,16 @@ class HomePage{
     }
 
     navToSection(e){
-        var page = e.target.dataset.eventName || e.target.parentNode && e.target.parentNode.dataset.eventName;
+        var page = e.target.dataset.pageName || e.target.parentNode && e.target.parentNode.dataset.pageName;
 
         if (!page) return;
 
-        pubSub.publish(
-            pubSub.actions.NAVIGATION.UPDATE,
-            { navEvent : page}
-        );
+        history.pushState(
+            { page : page },
+            `Navigation to ${page.slice(1)} page from home screen`,
+            page
+        )
+        SPARouter.getPageFromURL()
     }
 }
 

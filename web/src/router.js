@@ -12,6 +12,14 @@ class Router{
             this.updatePage.bind(this)
         );
 
+        this.routes = {
+            "#" : pubSub.actions.NAVIGATION.HOME,
+            "#home" : pubSub.actions.NAVIGATION.HOME,
+            "#vocab" : pubSub.actions.NAVIGATION.VOCAB,
+            "#books" : pubSub.actions.NAVIGATION.BOOKS
+        };
+
+        this.getPageFromURL = this.getPageFromURL.bind(this);
         return this;
     }
 
@@ -35,6 +43,13 @@ class Router{
                 break;
         }
     }
+
+    getPageFromURL(){
+        let pageName = window.location.hash;
+        this.updatePage( { navEvent : this.routes[pageName] })
+    }
 }
 
-export default new Router();
+let SPARouter = new Router();
+
+export default SPARouter;
