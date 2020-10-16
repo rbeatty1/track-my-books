@@ -1,6 +1,6 @@
 #books-tile-section article{
-    width: 20%;
-    margin-top: 5%;
+    width: 25%;
+    margin: 2rem 0 0 0;
     border-radius: 2.5px;
     box-shadow: 5px 5px 5px rgba(175,175,175, .5);
     padding: 0 5px 5px 5px;
@@ -43,6 +43,11 @@
     background: rgba(226,192,68, .1);
 }
 
+#books-tile-section article.thriller{
+    border: 2px solid rgb(116,34,108);
+    border-left: 5px solid rgb(116,34,108);
+    background: rgba(116,34,108, .1)
+}
 #books-tile-section article.non-fiction,
 #books-tile-section article.other{
     border: 2px solid #999;

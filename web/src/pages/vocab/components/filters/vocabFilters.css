@@ -6,10 +6,11 @@ aside#vocab-filters{
     flex-flow: column;
     overflow-y : scroll;
 }
-
 aside#vocab-filters select{
-    min-height: 2.5em;
+    /* width : 10%; */
+    margin : .5rem 1rem;
 }
+
 
 aside#vocab-filters ul{
     list-style : none;
@@ -21,19 +22,30 @@ aside#vocab-filters ul{
     margin : 3rem auto;
 }
 aside#vocab-filters button{
-    color: #ca8597;
-    background: #f8e5ee;
+    color: #999;
+    background: #eee;
     width: 100%;
     margin: .2em auto;
     border: none;
-    padding: 1em 0;
+    padding: .5em 0;
     border-radius: 5px;
     cursor : pointer;
+    word-wrap: none;
 }
 
 
 aside#vocab-filters button.active{
     color: white;
-    background:#7b0d1e;
+    background:#FF7F11;
     font-weight: 700;
+}
+
+@media only screen and (max-width : 700px){
+    
+    aside#vocab-filters{
+        width: 33%;
+    }
+    aside#vocab-filters ul{
+        margin : 0 auto;
+    }
 }
