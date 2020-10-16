@@ -5,10 +5,17 @@ body{
     overflow: hidden;
     height : 100vh;
     width : 100vw;
+    font-size : 24px;
 }
 #app{
     height : 100%;
     width : 100%;
     display: flex;
     flex-flow: column;
+}
+
+@media only screen and (max-width : 800px){
+    body{
+        font-size : 18px;
+    }
 }

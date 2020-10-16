@@ -1,5 +1,5 @@
 #books-page{
-    height : 92.5%;
+    min-height : 92.5%;
     display: flex;
     flex-flow: column;
 }
