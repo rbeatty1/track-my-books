@@ -5,7 +5,7 @@
 #vocab-word-list ul li.active{
     font-weight: 700;
     font-size: 1.1rem;
-    color: red;
+    color: #247BA0;
 }
 #vocab-word-list ul li.hidden{
     display: none;

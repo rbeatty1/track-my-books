@@ -1,5 +1,6 @@
 import './homePage.css'
 import pubSub from '../../util/pubSub';
+import * as i from '@primer/octicons';
 
 class HomePage{
     constructor(){
@@ -35,11 +36,7 @@ class HomePage{
                 return `
                     <button type='button' data-event-name="${pubSub.actions.NAVIGATION[s]}">
                         <h3>${sectionInfo.title}</h3>
-                        ${sectionInfo.desc.map( d => {
-                            var p = document.createElement('p');
-                            p.innerHTML = d;
-                            return p.outerHTML
-                        }).join("")}
+                        ${s == 'VOCAB' ? i.checklist.toSVG( { width : 75, height : 75}) : i.book.toSVG( { width : 75, height : 75}) }
                     </button>
                 `
             }).join("")
@@ -48,8 +45,7 @@ class HomePage{
         container.id = "home-page";
         var HTMLstring = `
             <header>
-                <h1>TrackMyBooks</h1>
-                <p>This is an application to play around with some data I created to track my reading habits and create some data visualizations in the process. Click a button below to navigate to a section and begin!</p>
+                <h1>track-my-books</h1>
             </header>
             <section>
             ${createSectionBtns(this.sections)}

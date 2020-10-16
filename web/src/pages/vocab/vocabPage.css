@@ -38,6 +38,7 @@ section#vocab-description.active-word{
 
 #vocab-page #vocab-word-list ul{
     align-content: flex-start;
+    font-weight : 300;
 }
 
 #vocab-page #vocab-word-list ul li{
@@ -52,11 +53,10 @@ section#vocab-groupings article.active ul{
 }
 
 #vocab-groups button.active{
-    color: white;
-    background:#7b0d1e;
+    color: #FFF5EB;
+    background:#FFAD5C;
     font-weight: 700;
 }
-
 #vocab-page section.charts-shown{
     width: 42%; 
     display : flex;
@@ -66,4 +66,17 @@ section#vocab-groupings article.active ul{
 }
 #vocab-page section#vocab-word-list.charts-hidden{
     width : 84%; 
+}
+
+@media only screen and (max-width : 700px){
+    
+    #vocab-page section.charts-shown{
+        width: 33%; 
+    }
+    #vocab-page #vocab-word-list ul{
+        padding-left : 0;
+    }
+    #vocab-page #vocab-word-list ul li{
+        width: 100%;
+    }
 }

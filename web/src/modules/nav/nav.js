@@ -23,14 +23,14 @@ const createHTML = () => {
         .keys(pubSub.actions.NAVIGATION)
         .filter( k => k !== "UPDATE")
         .map( l => l == "HOME" ? 
-            `<section><h3 data-event-name="${pubSub.actions.NAVIGATION[l]}">TrackMyBooks</h3></section>` : 
+            `<section><h3 data-event-name="${pubSub.actions.NAVIGATION[l]}">track-my-books</h3></section>` : 
             `<a href="#" data-event-name="${pubSub.actions.NAVIGATION[l]}">${properCapitalization(l)}</a>`
         )
         .join("");
     let navContainer = document.createElement("nav");
     navContainer.innerHTML =`
     <section>
-        <h3 data-event-name="${pubSub.actions.NAVIGATION.HOME}">TrackMyBooks</h3>
+        <h3 data-event-name="${pubSub.actions.NAVIGATION.HOME}">track-my-books</h3>
     </section>
     <ul>
         <li data-event-name="${pubSub.actions.NAVIGATION.BOOKS}">Books</li>

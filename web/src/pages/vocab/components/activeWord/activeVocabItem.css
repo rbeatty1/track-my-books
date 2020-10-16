@@ -4,7 +4,6 @@
     align-content: center;
     padding: .75rem;
     border-top: 2.5px solid #7b0d1e;
-    overflow-y: auto;
 }
 #active-word-container.hidden{
     display: none;
@@ -14,7 +13,7 @@
     height : 100;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background: rgba(202, 133, 151, .2);
+    background: #E0ECF6;
 }
 #active-word-container p{
     margin : 1rem;
