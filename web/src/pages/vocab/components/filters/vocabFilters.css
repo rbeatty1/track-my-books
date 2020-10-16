@@ -40,7 +40,7 @@ aside#vocab-filters button.active{
     font-weight: 700;
 }
 
-@media only screen and (max-width : 700px){
+@media all and (max-width : 700px){
     
     aside#vocab-filters{
         width: 33%;

@@ -47,7 +47,7 @@
     fill : #FFBE85;
 }
 
-@media only screen and (max-width : 800px){
+@media all and (max-width : 800px){
 
     #home-page section{
         display: flex;

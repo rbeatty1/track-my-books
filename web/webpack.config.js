@@ -13,7 +13,7 @@ module.exports = {
     entry: `./src/index.js`, // main JS file for application
     output: {
         path: `${__dirname}/dist`, // defining output path for build files
-        filename: '[name].bundle.js' // defining naming convention for bundled dist file
+        filename: '[name].[hash].bundle.js' // defining naming convention for bundled dist file
     },
     module: {
         rules : [
@@ -24,6 +24,7 @@ module.exports = {
             }
         ]
     },
+    devtool : "source-map",
     watch: true,
     devServer: {
         // configuration of server that will run upon npm start command
