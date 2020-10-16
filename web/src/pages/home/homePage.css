@@ -31,8 +31,8 @@
     height : 75%;
 }
 #home-page section button{
-    width : 150px;
-    height : 150px;
+    width : 15vw;
+    height : 15vw;
     background-color: #ACD9EC;
     color: #FF7F11;
     fill : #FF7F11;
@@ -45,4 +45,17 @@
     background-color: #DEF0F7;
     color : #FFBE85;
     fill : #FFBE85;
+}
+
+@media only screen and (max-width : 800px){
+
+    #home-page section{
+        display: flex;
+        flex-flow : column;
+        justify-content: space-evenly;
+    }
+    #home-page section button{
+        width : 33vw;
+        height : 33vw;
+    }
 }
