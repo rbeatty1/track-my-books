@@ -21,8 +21,8 @@ $BODY$
 		,b.author as book_author
 		,b.genre as book_genre
 	FROM words w
-	INNER JOIN books b ON
-		b.id = w.book_id
+	INNER JOIN books_dev b ON
+		cast(b.id as text) = w.book_id
 	INNER JOIN dict d ON
 		d.word_id = w.id
 	WHERE
