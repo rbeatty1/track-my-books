@@ -1,0 +1,7 @@
+#books-page nav{
+  background-color: $primary-green;
+
+  ul li a.router-link-active{
+    color: $primary-yellow;
+  }
+}

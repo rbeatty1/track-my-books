@@ -1,0 +1,33 @@
+nav {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+
+  a{
+    text-decoration: none;
+    color: white;
+
+    &.home{
+      font-family: 'Oswald', Helvetica, Arial, sans-serif;
+      font-weight: 700;
+    }
+  }
+
+  ul{
+    align-items: center;
+    display:flex;
+    font-family: 'Bebas Neue', sans-serif;
+    justify-content: space-evenly;
+    list-style: none;
+    text-transform: uppercase;
+    width: 15%;
+
+    .router-link-active{
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+  }
+}

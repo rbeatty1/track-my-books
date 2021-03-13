@@ -1,0 +1,3 @@
+@function get-primary-green($value){
+  @return map-get($map: $primary-green, $key: $value);
+}
