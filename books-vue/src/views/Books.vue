@@ -2,19 +2,24 @@
   <div class="page-container" id="books-page">
     <NavBar/>
     <main>
-      <LoadingIndicator :if="!loaded"/>
-      <h1 :else="loaded">This will be the books page.</h1>
+      <LoadingIndicator v-if="!loaded"/>
+      <BooksTotalSummary
+        v-else
+        :booksData="data"
+      />
     </main>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import BooksTotalSummary from '@/components/BooksTotalSummary.vue';
 import Api from '@/util/Api';
 
 export default {
   components: {
     NavBar,
+    BooksTotalSummary,
   },
   data() {
     return {
@@ -29,7 +34,6 @@ export default {
   methods: {
     resolveData(data) {
       if (data.success) {
-        console.log(data);
         this.loaded = true;
         this.data = data.results;
       } else {
