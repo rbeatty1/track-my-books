@@ -2,7 +2,15 @@
   #vocab-page nav{
     background-color: $primary-yellow;
 
-    .router-link-active{
-      color: $primary-red-dark;
+    a{
+      transition: color 0.25s ease-in;
+
+      &:hover{
+        color: $primary-red;
+      }
+
+      &.router-link-active{
+        color: $primary-red-dark;
+      }
     }
   }
