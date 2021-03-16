@@ -3,64 +3,85 @@
   text-align: left;
   transition: display 0.3s ease-in;
 
-    header.yearly-book-section-header{
-      align-items: center;
-      color: $primary-green;
-      display: flex;
+  header.yearly-book-section-header{
+    align-items: center;
+    color: $primary-green-dark;
+    display: flex;
 
-      button{
-        background-color: $primary-green-light;
-        border: none;
-        color: $primary-green;
-        text-align: left;
-  
-        h1{
-          cursor: pointer;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 4rem;
-          margin: 0;
+    button{
+      background-color: $primary-green-light;
+      border: none;
+      color: $primary-green-dark;
+      text-align: left;
 
-          @media screen and (max-width: 550px){
-            font-size: 2.5rem;
-          }
-        }
+      h1{
+        cursor: pointer;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 4rem;
+        margin: 0;
 
         @media screen and (max-width: 550px){
-          width: 50%;
+          font-size: 2.5rem;
         }
       }
-  
-      span{
-        font-weight: 100;
-        font-size: 1.25rem;
-        margin-left: 0.75rem;
-  
+
+      @media screen and (max-width: 550px){
+        width: 50%;
+      }
+    }
+
+    span{
+      font-weight: 100;
+      font-size: 1.25rem;
+      margin-left: 0.75rem;
+
+      strong{
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 1.5rem;
+      }
+
+      @media screen and (max-width: 850px) {
+        font-size: 1.1rem;
+
         strong{
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.5rem;
-        }
-
-        @media screen and (max-width: 850px) {
-          font-size: 1.1rem;
-
-          strong{
-            font-size: 1.25rem;
-          }
+          font-size: 1.25rem;
         }
       }
+    }
 
-      @media screen and (max-width: 700px) {
-        .yearly-book-section-summary{
+    @media screen and (max-width: 750px) {
+      .yearly-book-section-summary{
+        box-shadow: 0 4px 8px 2px rgba($primary-green-dark, 0.66);
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        padding: 1rem;
+        width: 100%;
+
+
+        span{
+          align-items: center;
           display: flex;
           flex-flow: column;
+          justify-content: center;
+          margin: 0;
+          text-align: center;
         }
-        
       }
+      
     }
+  }
 
-    .book-card-container{
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+  .book-card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 750px) {
+    &:not(.active),
+    header.yearly-book-section-header button{
+      display: none;
     }
+  }
   }

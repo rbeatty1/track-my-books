@@ -3,7 +3,7 @@
 
   button{
     background-color: $primary-green-light;
-    border: 2px solid $primary-green-dark;
+    border: 2px solid $primary-green;
     cursor: pointer;
     height: 1rem;
     margin-right: 0.5rem;
@@ -11,11 +11,12 @@
     transition: background-color 0.2s ease-in;
 
     &.active{
-      background-color: $primary-green-dark;
+      background-color: $primary-green;
     }
 
     &:hover{
-      background-color: $primary-green;
+      background-color: $primary-green-dark;
+      border: 2px solid $primary-green-dark;
     }
   }
 }

@@ -7,6 +7,11 @@
         <BooksTotalSummary
           :booksData="data"
         />
+        <MobileYearSectionNav
+          :years="years"
+          :openIdx="openIdx"
+          :updateOpenIdx="updateOpenIdx"
+        />
         <YearlyBookSection
           v-for="(year, idx) in years"
           :key="year"
@@ -24,12 +29,14 @@
 import NavBar from '@/components/NavBar.vue';
 import BooksTotalSummary from '@/components/BooksTotalSummary.vue';
 import YearlyBookSection from '@/components/YearlyBookSection.vue';
+import MobileYearSectionNav from '@/components/MobileYearSectionNav.vue';
 import Api from '@/util/Api';
 
 export default {
   components: {
     NavBar,
     BooksTotalSummary,
+    MobileYearSectionNav,
     YearlyBookSection,
   },
   data() {
@@ -37,8 +44,8 @@ export default {
       api: new Api({ endpoint: 'books' }),
       data: null,
       loaded: false,
-      years: null,
       openIdx: 0,
+      years: null,
     };
   },
   created() {

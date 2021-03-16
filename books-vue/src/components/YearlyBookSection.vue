@@ -1,5 +1,5 @@
 <template>
-  <div class="yearly-book-section">
+  <div :class="['yearly-book-section', open ? 'active' : '']">
     <!--@TODO: OnClick => collapse -->
     <header class="yearly-book-section-header">
       <button

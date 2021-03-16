@@ -1,0 +1,29 @@
+#mobile-year-section-nav{
+  margin: 0.5rem 1rem;
+  text-align: left;
+
+  h3{
+    color: $primary-green-dark;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  button{
+    background-color: transparent;
+    border: none;
+    color: $primary-green;
+    cursor: pointer;
+
+    &.active{
+      color: $primary-green-dark;
+      font-weight: 700;
+      text-decoration: underline solid $primary-green-dark;
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    display: none;
+    
+  }
+}
