@@ -12,12 +12,12 @@ describe('Landing Page', () => {
   });
 
   it('gets the title of the most recently started book that doesn\'t have an end date', () => {
-    expect(Landing.computed.activelyReading.call(books)).toBe(books.data[0].title);
+    expect(Landing.computed.getCurrentlyReading.call(books)).toBe(books.data[0].title);
   });
 
   it('returns status indicator if all books have an end date', () => {
     books.data[0].end = new Date();
-    expect(Landing.computed.activelyReading.call(books)).toBe('Not readin\' nothing');
-    expect(Landing.computed.activelyReading.call({ loaded: true, data: [] })).toBe('Not readin\' nothing');
+    expect(Landing.computed.getCurrentlyReading.call(books)).toBe('Not readin\' nothing');
+    expect(Landing.computed.getCurrentlyReading.call({ loaded: true, data: [] })).toBe('Not readin\' nothing');
   });
 });
