@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { formatNumber } from '@/util/Helpers';
+import { calcPagesRead, formatNumber } from '@/util/Helpers';
 
 export default {
   props: {
@@ -33,7 +33,7 @@ export default {
       return formatNumber(this.booksData.reduce((acc, cur) => acc + cur.wordCount, 0));
     },
     getTotalPagesRead() {
-      return formatNumber(this.getFinishedBooks().reduce((acc, cur) => acc + cur.pages, 0));
+      return calcPagesRead(this.getFinishedBooks());
     },
   },
 };

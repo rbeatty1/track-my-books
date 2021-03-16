@@ -1,0 +1,66 @@
+.yearly-book-section{
+  margin: 1rem 2rem;
+  text-align: left;
+  transition: display 0.3s ease-in;
+
+    header.yearly-book-section-header{
+      align-items: center;
+      color: $primary-green;
+      display: flex;
+
+      button{
+        background-color: $primary-green-light;
+        border: none;
+        color: $primary-green;
+        text-align: left;
+  
+        h1{
+          cursor: pointer;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 4rem;
+          margin: 0;
+
+          @media screen and (max-width: 550px){
+            font-size: 2.5rem;
+          }
+        }
+
+        @media screen and (max-width: 550px){
+          width: 50%;
+        }
+      }
+  
+      span{
+        font-weight: 100;
+        font-size: 1.25rem;
+        margin-left: 0.75rem;
+  
+        strong{
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.5rem;
+        }
+
+        @media screen and (max-width: 850px) {
+          font-size: 1.1rem;
+
+          strong{
+            font-size: 1.25rem;
+          }
+        }
+      }
+
+      @media screen and (max-width: 700px) {
+        .yearly-book-section-summary{
+          display: flex;
+          flex-flow: column;
+        }
+        
+      }
+    }
+
+    .book-card-container{
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
