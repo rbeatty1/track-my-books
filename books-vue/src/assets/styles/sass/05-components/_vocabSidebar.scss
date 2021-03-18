@@ -8,7 +8,9 @@
   width: 15%;
 
   select {
+    color: #999;
     font-family: Oswald, Arial, Helvetica, sans-serif;
+    font-size: 1.25rem;
     margin: 0.5rem auto;
     padding: 0.5rem;
     text-align: center;
@@ -28,13 +30,13 @@
     width: 75%;
 
     &:hover{
-      color: $primary-red;
+      color: $primary-red-dark;
     }
 
     &.active{
       font-size: 1.1rem;
       font-weight: 700;
-      color: $primary-red-dark;
+      color: $primary-red;
     }
   }
 }
