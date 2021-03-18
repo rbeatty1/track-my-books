@@ -1,5 +1,5 @@
-
-  #vocab-page nav{
+#vocab-page {
+  nav{
     background-color: $primary-yellow;
 
     a{
@@ -14,3 +14,15 @@
       }
     }
   }
+
+  main{
+    background-color: $primary-yellow-light;
+    display: flex;
+
+    #vocab-page-content {
+      display: flex;
+      flex-flow: column;
+      width: 80%;
+    }
+  }
+}

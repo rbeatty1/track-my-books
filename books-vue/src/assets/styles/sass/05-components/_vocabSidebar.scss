@@ -1,0 +1,40 @@
+#vocab-page aside{
+  background-color: $primary-red-light;
+  display: flex;
+  height: 95%;
+  flex-flow: column;
+  margin: 1rem;
+  overflow-y: auto;
+  width: 15%;
+
+  select {
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    text-align: center;
+    width: 80%;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-family: Oswald, Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    margin: 0.15rem auto;
+    padding: 0.5rem;
+    text-transform: capitalize;
+    width: 75%;
+
+    &:hover{
+      color: $primary-red;
+    }
+
+    &.active{
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: $primary-red-dark;
+    }
+  }
+}
