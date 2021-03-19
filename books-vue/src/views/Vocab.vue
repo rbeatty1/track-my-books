@@ -11,7 +11,19 @@
         :updateFilterValue="updateFilterValue"
       />
       <div id="vocab-page-content">
-        <section id="vocab-chart-section"></section>
+        <section id="vocab-chart-section">
+          <VocabChart
+            :activeWordId="activeWordId"
+            chartType="area"
+            :groupType="filterType"
+            :vocabWords="getFilteredVocabList()"
+          />
+          <VocabChart
+            :groupType="filterType"
+            :vocabWords="getFilteredVocabList()"
+            chartType="treemap"
+          />
+        </section>
         <VocabWordList
           :activeWordId="activeWordId"
           :updateActiveWord="updateActiveWordHandler"
@@ -24,6 +36,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import VocabChart from '@/components/VocabChart.vue';
 import VocabSidebar from '@/components/VocabSidebar.vue';
 import VocabWordList from '@/components/VocabWordList.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
@@ -34,6 +47,7 @@ export default {
   components: {
     LoadingIndicator,
     NavBar,
+    VocabChart,
     VocabSidebar,
     VocabWordList,
   },

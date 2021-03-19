@@ -1,3 +1,18 @@
 #vocab-page #vocab-chart-section {
+  display: flex;
   height: 60%;
+  justify-content: space-around;
+
+  .vocab-chart{
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    display:flex;
+    height: 95%;
+    justify-content: center;
+    width: 45%;
+
+    .vue-apexcharts{
+      box-shadow: 0 2px 4px 4px rgb(150, 150, 150, .4);
+    }
+  }
 }

@@ -18,7 +18,44 @@ const VOCAB_GROUP_TYPES = {
   },
 };
 
+const VOCAB_CHART_OPTIONS = {
+  area: {
+    chart: {
+      type: 'area',
+      background: '#eee',
+      fontFamily: 'Oswald',
+      id: 'vocab-line-chart',
+      toolbar: false,
+    },
+    colors: ['#DD9F03', '#b54a3f', '#d17f54', '#e9b376', '#ffe7a4'],
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: 'smooth',
+    },
+    title: {
+      text: 'Words Over Time',
+      style: {
+        color: '#DD9F03',
+        fontSize: '24px',
+        fontFamily: 'Bebas Neue',
+      },
+    },
+    xaxis: {
+      type: 'datetime',
+    },
+  },
+  treemap: {
+    chart: {
+      background: '#ffa4c4',
+      fontFamily: 'Oswald',
+      id: 'vocab-treemap-chart',
+    },
+  },
+};
 export {
+  VOCAB_CHART_OPTIONS,
   VOCAB_GROUP_TYPES,
   placeHolder,
 };
