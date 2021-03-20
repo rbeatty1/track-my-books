@@ -48,9 +48,28 @@ const VOCAB_CHART_OPTIONS = {
   },
   treemap: {
     chart: {
-      background: '#ffa4c4',
+      background: '#eee',
       fontFamily: 'Oswald',
       id: 'vocab-treemap-chart',
+      parentHeightOffset: 25,
+      toolbar: false,
+    },
+    plotOptions: {
+      treemap: {
+        distributed: true,
+        enableShades: false,
+      },
+    },
+    theme: {
+      palette: 'palette7',
+    },
+    title: {
+      text: 'Words By Type',
+      style: {
+        color: '#920034',
+        fontSize: '24px',
+        fontFamily: 'Bebas Neue',
+      },
     },
   },
 };

@@ -14,5 +14,11 @@
     .vue-apexcharts{
       box-shadow: 0 2px 4px 4px rgb(150, 150, 150, .4);
     }
+
+    &#vocab-treemap{
+      .apexcharts-data-labels {
+        text-transform: capitalize;
+      }
+    }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="vocab-chart">
+  <div class="vocab-chart" :id="'vocab-'+chartType">
     <apex-chart
       :series="getDataSeries()"
       :type="chartType"
@@ -25,17 +25,36 @@ export default {
       return VOCAB_CHART_OPTIONS[this.chartType];
     },
     getDataSeries() {
-      const series = [
-        {
-          name: 'Word Count',
+      const getWordsOverTimeSeries = () => {
+        const series = [
+          {
+            name: 'Word Count',
+            data: [],
+          },
+        ];
+        [...new Set(this.vocabWords)]
+          .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+          .map((w) => series[0].data.push([w.timestamp, series[0].data.length + 1]));
+        return series;
+      };
+      const getTreemapSeries = () => {
+        const processWordForSeries = (word, series) => {
+          const isWordTypeInSeries = series.data.find((s) => s.x === word.type);
+          if (!isWordTypeInSeries) {
+            series.data.push({
+              x: word.type,
+              y: 1,
+            });
+          } else { isWordTypeInSeries.y += 1; }
+        };
+        const series = [{
           data: [],
-        },
-      ];
-      [...new Set(this.vocabWords)]
-        .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
-        .map((w) => series[0].data.push([w.timestamp, series[0].data.length + 1]));
-
-      return series;
+        }];
+        this.vocabWords
+          .map((w) => processWordForSeries(w, series[0]));
+        return series;
+      };
+      return this.chartType === 'area' ? getWordsOverTimeSeries() : getTreemapSeries();
     },
   },
 };
