@@ -1,0 +1,140 @@
+#vocab-page main #vocab-page-content #vocab-word-list{
+  background-color: #dfdfdf;
+  height: 40%;
+  width: 100%;
+
+  &.active{
+    #vocab-info-container article {
+      width: 45%;
+
+      ul li {
+        width: 33%;
+      }
+    }
+  }
+
+  header{
+    color: $primary-red-dark;
+    display: flex;
+    font-weight: 100;
+    font-size: 1.5rem;
+    justify-content: space-around;
+    margin-left: 1.5rem;
+    width: 33%;
+
+    strong {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+  }
+
+  #vocab-info-container{
+    display: flex;
+    height: 80%;
+    justify-content: space-around;
+
+    article{
+      width: 100%;
+
+      ul{
+        align-content: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 1rem;
+        height: 90%;
+        justify-content: flex-start;
+        list-style: none;
+        overflow-y: auto;
+        text-align: left;
+    
+        li {
+          color: #999;
+          text-transform: capitalize;
+          width: 15%;
+    
+          &:hover{
+            color: $primary-red-dark;
+            cursor: pointer;
+          }
+    
+          &.active{
+            color: $primary-red;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    height: 60%;
+    
+    header{
+      font-size: 1.1rem;
+      justify-content: space-between;
+      margin: 0.5rem auto;
+      width: 85%;
+
+      strong {
+        font-size: 1.3rem;
+      }
+    }
+
+    #vocab-info-container{
+      display: flex;
+      height: 90%;
+      justify-content: space-around;
+  
+      article{
+        width: 100%;
+  
+        ul{
+          align-content: flex-start;
+          display: flex;
+          flex-wrap: wrap;
+          font-size: 0.9rem;
+          overflow-y: auto;
+      
+          li {
+            color: #999;
+            text-transform: capitalize;
+            width: 25%;
+      
+            &:hover{
+              color: $primary-red-dark;
+              cursor: pointer;
+            }
+      
+            &.active{
+              color: $primary-red;
+            }
+          }
+        }
+      }
+    }
+
+    &.active{
+      #vocab-info-container {
+        flex-flow: column;
+        
+        article {
+          font-size: 0.9rem;
+          margin: auto;
+          width: 90%;
+
+          &:not(#active-word-section){
+            height: 50%;
+            order: 2;
+          }
+
+          ul {
+            padding-left: 0;
+            li {
+              width: 25%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

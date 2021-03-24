@@ -1,0 +1,23 @@
+#vocab-page #vocab-info-container #active-word-section{
+  background-color: #eee;
+  box-shadow: 0 2px 4px 2px rgba(#aaa, .33);
+  color: #666;
+  height: 90%;
+  overflow: auto;
+  padding: 0.5rem;
+  text-align: left;
+
+  strong{
+    color: #555;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.75px;
+    text-transform: capitalize;
+  }
+
+    @media screen and (max-width: 750px) {
+    height: 33%;
+    order: 1;
+    
+  }
+}

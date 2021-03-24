@@ -1,0 +1,22 @@
+.book-card-nav-btns {
+  margin-left: 1rem;
+
+  button{
+    background-color: $primary-green-light;
+    border: 2px solid $primary-green;
+    cursor: pointer;
+    height: 1rem;
+    margin-right: 0.5rem;
+    width: 3rem;
+    transition: background-color 0.2s ease-in;
+
+    &.active{
+      background-color: $primary-green;
+    }
+
+    &:hover{
+      background-color: $primary-green-dark;
+      border: 2px solid $primary-green-dark;
+    }
+  }
+}

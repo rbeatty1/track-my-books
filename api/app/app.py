@@ -5,7 +5,7 @@ import actions.vocab as v
 import json
 
 api = Flask(__name__)
-base_route = r'/api/v1/'
+base_route = r'/books/api/v1/'
 CORS(api)
 
 books_adapter = b.BooksAPI()
@@ -24,7 +24,7 @@ def books_endpoint():
 @api.route(base_route+"vocab/", methods=["GET"])
 def vocab_methods():
     args = request.args
-    if request.method == "GET" and str(args.get("action")) == 'SELECT':
+    if request.method == "GET":
         payload = vocab_adapter.select(args)
         return json.dumps(payload, indent=2, sort_keys=True, default=str)
     if request.method == "GET" and str(args.get("action")) == 'VOCAB_OVER_TIME':

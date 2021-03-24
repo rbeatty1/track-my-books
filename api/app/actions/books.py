@@ -27,7 +27,9 @@ class BooksAPI():
                 "start": book[4],
                 "end": book[5],
                 "pages": book[6],
-                "wordCount": book[7]
+                "wordCount": book[7],
+                "format": book[8],
+                "rating": book[9]
             }
             payload.append(item)
         return payload

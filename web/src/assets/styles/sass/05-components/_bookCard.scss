@@ -1,0 +1,60 @@
+.book-card{
+  background-color: $primary-yellow-light;
+  margin: 0.5rem;
+  width: 22.5vw;
+
+  header{
+    align-items: center;
+    background-color: white;
+    color: $primary-yellow;
+    display: flex;
+    height: 5rem;
+    justify-content: space-around;
+    padding: 0.75rem 0;
+    text-align: right;
+    width: 100%;
+
+    strong{
+      font-size: 1.1rem;
+      margin-left: 0.25rem;
+      overflow: hidden;
+      text-align: left;
+      max-width: 75%;
+    }
+
+    span{
+      margin-right: 0.25rem;
+    }
+    
+  }
+
+  .book-card-details{
+    color: $primary-green;
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem auto;
+    width: 90%;
+  }
+
+  .book-details-icons{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    text-align: center;
+
+    .book-ratings{
+      .fa-star{
+        color: $primary-yellow;
+      }
+  }
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 40vw;
+  }
+
+  @media screen and (max-width: 650px) {
+    width: 75vw;
+  }
+}

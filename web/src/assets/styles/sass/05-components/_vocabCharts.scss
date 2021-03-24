@@ -1,0 +1,64 @@
+#vocab-page #vocab-chart-section {
+  display: flex;
+  height: 60%;
+  justify-content: space-around;
+
+  header{
+    display: none;
+
+    h3 {
+      color: $primary-yellow-dark;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 100;
+      margin: 0.25rem 0;
+
+      &.active{
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-decoration: underline solid $primary-yellow-dark;
+      }
+    }
+  }
+
+  .vocab-chart{
+    align-items: center;
+    background-color: rgb(245, 245, 245);
+    display:flex;
+    height: 95%;
+    justify-content: center;
+    width: 45%;
+
+    .vue-apexcharts{
+      box-shadow: 0 2px 4px 4px rgb(150, 150, 150, .4);
+    }
+
+    &#vocab-treemap{
+      .apexcharts-data-labels {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    display: inline;
+    height: 45%;
+    margin: 0 auto;
+
+    header{
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .vocab-chart{
+      margin: auto;
+      width: 90%;
+
+      &:not(.active){
+        display: none;
+      }
+
+    }
+    
+  }
+}
