@@ -19,16 +19,6 @@
       />
       <div id="vocab-page-content">
         <section id="vocab-chart-section">
-          <header>
-            <h3
-              :class="[activeChart === 'area' ? 'active' : '']"
-              @click="updateActiveChartHandler('area')"
-            >Words over Time</h3>
-            <h3
-              :class="[activeChart === 'treemap' ? 'active' : '']"
-              @click="updateActiveChartHandler('treemap')"
-            >Words by Type</h3>
-          </header>
           <VocabChart
             :activeChart="'area' === activeChart"
             :activeWordId="activeWordId"

@@ -24,23 +24,13 @@ const VOCAB_CHART_OPTIONS = {
       type: 'area',
       background: '#eee',
       fontFamily: 'Oswald',
-      id: 'vocab-line-chart',
+      id: 'vocab-area-chart',
       toolbar: false,
     },
     colors: ['#DD9F03', '#b54a3f', '#d17f54', '#e9b376', '#ffe7a4'],
     dataLabels: {
       enabled: false,
     },
-    responsive: [
-      {
-        breakpoint: 750,
-        options: {
-          title: {
-            text: undefined,
-          },
-        },
-      },
-    ],
     stroke: {
       curve: 'smooth',
     },
@@ -80,9 +70,6 @@ const VOCAB_CHART_OPTIONS = {
         },
       },
     ],
-    theme: {
-      palette: 'palette7',
-    },
     title: {
       text: 'Words By Type',
       style: {

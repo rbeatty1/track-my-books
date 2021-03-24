@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[activeChart ? 'active ' : ''] + 'vocab-chart'"
-    :id="'vocab-'+chartType"
+    :id="'vocab-'+chartType+'-chart'"
   >
     <apex-chart
       :series="getDataSeries()"
@@ -58,6 +58,7 @@ export default {
           .map((w) => processWordForSeries(w, series[0]));
         return series;
       };
+
       return this.chartType === 'area' ? getWordsOverTimeSeries() : getTreemapSeries();
     },
   },
