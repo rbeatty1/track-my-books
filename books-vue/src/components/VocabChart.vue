@@ -1,5 +1,8 @@
 <template>
-  <div class="vocab-chart" :id="'vocab-'+chartType">
+  <div
+    :class="[activeChart ? 'active ' : ''] + 'vocab-chart'"
+    :id="'vocab-'+chartType"
+  >
     <apex-chart
       :series="getDataSeries()"
       :type="chartType"
@@ -15,6 +18,7 @@ import { VOCAB_CHART_OPTIONS } from '@/util/Constants';
 
 export default {
   props: {
+    activeChart: Boolean,
     activeWordId: Number,
     chartType: String,
     groupType: Object,

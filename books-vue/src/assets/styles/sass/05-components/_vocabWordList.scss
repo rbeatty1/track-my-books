@@ -65,4 +65,76 @@
       }
     }
   }
+
+  @media screen and (max-width: 750px) {
+    height: 60%;
+    
+    header{
+      font-size: 1.1rem;
+      justify-content: space-between;
+      margin: 0.5rem auto;
+      width: 85%;
+
+      strong {
+        font-size: 1.3rem;
+      }
+    }
+
+    #vocab-info-container{
+      display: flex;
+      height: 90%;
+      justify-content: space-around;
+  
+      article{
+        width: 100%;
+  
+        ul{
+          align-content: flex-start;
+          display: flex;
+          flex-wrap: wrap;
+          font-size: 0.9rem;
+          overflow-y: auto;
+      
+          li {
+            color: #999;
+            text-transform: capitalize;
+            width: 25%;
+      
+            &:hover{
+              color: $primary-red-dark;
+              cursor: pointer;
+            }
+      
+            &.active{
+              color: $primary-red;
+            }
+          }
+        }
+      }
+    }
+
+    &.active{
+      #vocab-info-container {
+        flex-flow: column;
+        
+        article {
+          font-size: 0.9rem;
+          margin: auto;
+          width: 90%;
+
+          &:not(#active-word-section){
+            height: 50%;
+            order: 2;
+          }
+
+          ul {
+            padding-left: 0;
+            li {
+              width: 25%;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -3,6 +3,24 @@
   height: 60%;
   justify-content: space-around;
 
+  header{
+    display: none;
+
+    h3 {
+      color: $primary-yellow-dark;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 100;
+      margin: 0.25rem 0;
+
+      &.active{
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-decoration: underline solid $primary-yellow-dark;
+      }
+    }
+  }
+
   .vocab-chart{
     align-items: center;
     background-color: rgb(245, 245, 245);
@@ -20,5 +38,26 @@
         text-transform: capitalize;
       }
     }
+  }
+
+  @media screen and (max-width: 750px) {
+    display: inline;
+    height: 35%;
+
+    header{
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .vocab-chart{
+      margin: auto;
+      width: 90%;
+
+      &:not(.active){
+        display: none;
+      }
+
+    }
+    
   }
 }

@@ -2,10 +2,11 @@ import { createApp } from 'vue';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faStar,
   faBook,
-  faTabletAlt,
   faHeadphones,
+  faStar,
+  faTabletAlt,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import VueApexCharts from 'vue3-apexcharts';
@@ -13,10 +14,11 @@ import VueApexCharts from 'vue3-apexcharts';
 import App from './App.vue';
 import router from './router';
 
-library.add(faStar);
 library.add(faBook);
-library.add(faTabletAlt);
 library.add(faHeadphones);
+library.add(faStar);
+library.add(faTabletAlt);
+library.add(faTimes);
 
 createApp(App)
   .use(router)

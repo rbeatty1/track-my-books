@@ -3,22 +3,41 @@
     <NavBar/>
     <LoadingIndicator v-if='!loaded'/>
     <main v-else>
+      <button
+        id="show-mobile-filters"
+        type="button"
+        @click="toggleMobileFilters"
+      >Show Filters</button>
       <VocabSidebar
         :filterType='filterType'
-        :vocabData='data'
+        :mobileFiltersActive='mobileFiltersActive'
         :selectedFilterValue="selectedFilterValue"
+        :toggleMobileFilters="toggleMobileFilters"
         :updateFilterTypeAction="updateFilterType"
         :updateFilterValue="updateFilterValue"
+        :vocabData='data'
       />
       <div id="vocab-page-content">
         <section id="vocab-chart-section">
+          <header>
+            <h3
+              :class="[activeChart === 'area' ? 'active' : '']"
+              @click="updateActiveChartHandler('area')"
+            >Words over Time</h3>
+            <h3
+              :class="[activeChart === 'treemap' ? 'active' : '']"
+              @click="updateActiveChartHandler('treemap')"
+            >Words by Type</h3>
+          </header>
           <VocabChart
+            :activeChart="'area' === activeChart"
             :activeWordId="activeWordId"
             chartType="area"
             :groupType="filterType"
             :vocabWords="getFilteredVocabList()"
           />
           <VocabChart
+            :activeChart="'treemap' === activeChart"
             :groupType="filterType"
             :vocabWords="getFilteredVocabList()"
             chartType="treemap"
@@ -53,11 +72,13 @@ export default {
   },
   data() {
     return {
+      activeChart: 'area',
       activeWordId: null,
       api: new Api({ endpoint: 'vocab' }),
       data: null,
       filterType: VOCAB_GROUP_TYPES.GENRE,
       loaded: false,
+      mobileFiltersActive: false,
       selectedFilterValue: 'All',
     };
   },
@@ -78,6 +99,12 @@ export default {
         this.loaded = false;
         this.data = data.results;
       }
+    },
+    toggleMobileFilters() {
+      this.mobileFiltersActive = !this.mobileFiltersActive;
+    },
+    updateActiveChartHandler(newActiveChart) {
+      this.activeChart = newActiveChart;
     },
     updateActiveWordHandler(newActiveId) {
       this.activeWordId = this.activeWordId === newActiveId ? null : newActiveId;

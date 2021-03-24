@@ -14,4 +14,10 @@
     letter-spacing: 0.75px;
     text-transform: capitalize;
   }
+
+    @media screen and (max-width: 750px) {
+    height: 33%;
+    order: 1;
+    
+  }
 }

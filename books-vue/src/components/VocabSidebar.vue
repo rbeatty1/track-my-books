@@ -1,5 +1,48 @@
 <template>
-  <aside>
+  <div
+    :class="[mobileFiltersActive ? 'active' : '']"
+    id="vocab-filters-bg-wrapper"
+    v-if="mobileView"
+  >
+    <aside>
+      <header>
+        <select
+          @change="updateFilterTypeHandler"
+        >
+          <option
+            value="0"
+            :selected="0 === filterType.code"
+          >Genre</option>
+          <option
+            value="1"
+            :selected="1 === filterType.code"
+          >Book Title</option>
+          <option
+            value="2"
+            :selected="2 === filterType.code"
+          >Word Type</option>
+        </select>
+        <button
+          @click="toggleMobileFilters"
+          type="button"
+          aria-controls="vocab-filters-bg-wrapper"
+        ><font-awesome-icon :icon="['fas', 'times']"/></button>
+      </header>
+      <ul>
+        <li
+          v-for='val in getUniqueGroupValues()'
+          :key='val'
+        >
+          <button
+            @click="updateFilterValue(val)"
+            :class="[val === selectedFilterValue ? 'active' : '']"
+            type="button"
+          >{{ val  }}</button>
+        </li>
+      </ul>
+    </aside>
+  </div>
+  <aside v-else>
     <select
       @change="updateFilterTypeHandler"
     >
@@ -33,9 +76,16 @@ export default {
   props: {
     vocabData: Array,
     filterType: Object,
+    mobileFiltersActive: Boolean,
     selectedFilterValue: String,
+    toggleMobileFilters: Function,
     updateFilterTypeAction: Function,
     updateFilterValue: Function,
+  },
+  data() {
+    return {
+      mobileView: window.innerWidth <= 750,
+    };
   },
   methods: {
     getUniqueGroupValues() {

@@ -31,6 +31,16 @@ const VOCAB_CHART_OPTIONS = {
     dataLabels: {
       enabled: false,
     },
+    responsive: [
+      {
+        breakpoint: 750,
+        options: {
+          title: {
+            text: undefined,
+          },
+        },
+      },
+    ],
     stroke: {
       curve: 'smooth',
     },
@@ -60,6 +70,16 @@ const VOCAB_CHART_OPTIONS = {
         enableShades: false,
       },
     },
+    responsive: [
+      {
+        breakpoint: 750,
+        options: {
+          title: {
+            text: undefined,
+          },
+        },
+      },
+    ],
     theme: {
       palette: 'palette7',
     },
