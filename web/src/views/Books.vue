@@ -43,6 +43,7 @@ export default {
     return {
       api: new Api({ endpoint: 'books' }),
       data: null,
+      isAdmin: localStorage.getItem('jwtAccessToken'),
       loaded: false,
       openIdx: 0,
       years: null,
