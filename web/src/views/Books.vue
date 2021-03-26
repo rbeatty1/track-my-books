@@ -122,7 +122,6 @@ export default {
         clone[existingIdx] = newData;
       }
       this.data = clone;
-      console.log(this.data.find((d) => d.id === 503));
     },
     updateOpenIdx(year) {
       const yearIdx = this.years.indexOf(year);

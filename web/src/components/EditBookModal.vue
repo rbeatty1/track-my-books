@@ -20,6 +20,7 @@
             id="end-date"
             v-model="endDate"
             type="date"
+            :min="getMinDate()"
           >
         </label>
       </span>
@@ -76,6 +77,12 @@ export default {
           'en-US',
           { month: 'numeric', day: 'numeric', year: 'numeric' },
         );
+    },
+    getMinDate() {
+      const startDate = new Date(this.data.start);
+      const month = startDate.getMonth() + 1;
+      const date = startDate.getDate();
+      return `${startDate.getFullYear()}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
     },
     submitEdits() {
       const failureFn = (res) => {
