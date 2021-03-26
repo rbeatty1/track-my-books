@@ -44,6 +44,7 @@ export default {
         if (result[0].auth) {
           this.error = false;
           this.success = true;
+          if (localStorage.getItem('jwtAccessToken')) localStorage.removeItem('jwtAccessToken');
           localStorage.setItem('jwtAccessToken', result[0].auth);
         } else {
           this.success = false;

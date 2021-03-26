@@ -15,7 +15,41 @@
     }
   }
 
+  #modal header{
+    background-color: $primary-green-light;
+    color: $primary-green;
+    font-size: 1.25rem;
+  }
+
   main{
     background-color: $primary-green-light;
+
+    #books-banner{
+      align-items: center;
+      display: flex;
+
+      #open-book-modal {
+        background-color: $primary-green-dark;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        font-family: 'Oswald';
+        margin: 0.5rem 2rem;
+        padding: 1rem 1.5rem;
+  
+        &:hover {
+          background-color: lighten($primary-green-dark, 5);
+        }
+      }
+
+      @media screen and (max-width: 750px) {
+        flex-flow: column;
+
+        #open-book-modal {
+          order: 1;
+        }
+        
+      }
+    }
   }
 }

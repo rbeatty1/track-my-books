@@ -35,4 +35,28 @@ export default class ApiWrapper {
       .then((d) => callbackFn(d))
       .catch(() => callbackFn({ auth: false }));
   }
+
+  postData(postData, options) {
+    fetch(
+      this.apiUrl,
+      {
+        method: options.method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          Authorization: `Bearer ${localStorage.getItem('jwtAccessToken')}`,
+        },
+        body: JSON.stringify(postData),
+      },
+    )
+      .then((res) => {
+        if (!res.ok) {
+          options.failure(res);
+          return res;
+        }
+        return res.json();
+      })
+      .then((d) => options.success(d))
+      .catch((err) => options.failure(err));
+  }
 }

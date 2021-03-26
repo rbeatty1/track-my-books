@@ -47,6 +47,11 @@
             :key="i"
           ></font-awesome-icon>
         </span>
+        <font-awesome-icon
+          @click="toggleBookModal('edit', data)"
+          :icon="['fas', 'pencil-alt']"
+          v-else
+        />
       </div>
     </article>
   </div>
@@ -58,6 +63,12 @@ import { formatNumber } from '@/util/Helpers';
 export default {
   props: {
     data: Object,
+    toggleBookModal: Function,
+  },
+  data() {
+    return {
+      isAdmin: localStorage.getItem('jwtAccessToken') !== null,
+    };
   },
   methods: {
     calcDaysSpendReading() {
