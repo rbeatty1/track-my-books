@@ -11,7 +11,10 @@
   #modal{
     background-color: white;
     border-radius: 3px;
+    display: flex;
+    flex-flow: column;
     width: 40%;
+    max-height: 75%;
 
     header {
       align-items: center;
@@ -28,11 +31,15 @@
       }
     }
 
-    .modal-body-title {
-      display: flex;
-      justify-content: space-evenly;
-      margin: auto;
-      width: 60%;
+    section {
+      overflow: auto;
+
+      .modal-body-title {
+        display: flex;
+        justify-content: space-evenly;
+        margin: auto;
+        width: 60%;
+      }
     }
 
     @media screen and (max-width: 750px) {

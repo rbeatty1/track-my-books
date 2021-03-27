@@ -30,6 +30,7 @@
 
       #open-book-modal {
         background-color: $primary-green-dark;
+        border: none;
         border-radius: 5px;
         color: white;
         cursor: pointer;
@@ -39,6 +40,7 @@
   
         &:hover {
           background-color: lighten($primary-green-dark, 5);
+          box-shadow: 1px 4px 8px 0 rgba(black, 0.25);
         }
       }
 

@@ -48,32 +48,39 @@ class BooksAPI():
             %s::integer
         );"""
         cur = self.con.cursor()
-        cur.execute(
-            sql.SQL(create)
-            .format(proc=sql.Identifier('insert_book')),
-            [
-                data['title'],
-                data['author'],
-                data['genre'],
-                data['start'],
-                data['end'],
-                data['pages'],
-                data['rating'],
-                data['format']
-            ]
-        )
+        try:
+            cur.execute(
+                sql.SQL(create)
+                .format(proc=sql.Identifier('insert_book')),
+                [
+                    data['title'],
+                    data['author'],
+                    data['genre'],
+                    data['start'],
+                    data['end'],
+                    data['pages'],
+                    data['rating'],
+                    data['format']
+                ]
+            )
 
-        self.con.commit()
-        new_id = cur.fetchone()[0]
-        new_book = self.select(
-            {
-                'id': new_id,
-                'title': None,
-                'author': None,
-                'genre': None
+            self.con.commit()
+            new_id = cur.fetchone()[0]
+            new_book = self.select(
+                {
+                    'id': new_id,
+                    'title': None,
+                    'author': None,
+                    'genre': None
+                }
+            )
+            return new_book
+        except Exception as e:
+            self.con.rollback()
+            return {
+                'success': False,
+                'msg': 'Failed to create record in database. ' + e
             }
-        )
-        return new_book
     
     def update(self, data):
         cur = self.con.cursor()

@@ -1,5 +1,5 @@
 <template>
-  <div :class="'page-container' [isAdmin ? 'admin' : '']" id="books-page">
+  <div :class="[isAdmin ? 'page-container admin' : 'page-container']" id="books-page">
     <NavBar/>
     <Modal
       :toggleModal="toggleBookModal"
@@ -9,12 +9,21 @@
       v-show="modal.open"
       :class="`${modal.type}-modal`"
     >
-      <NewBookModal v-if="modal.type === 'new'"/>
+      <NewBookModal
+        v-if="modal.type === 'new'"
+        :toggleModal="toggleBookModal"
+        :updateBooksData="updateBooksData"
+      />
       <EditBookModal
         v-else-if="modal.type === 'edit'"
         :data="modal.data"
         :toggleModal="toggleBookModal"
         :updateBooksData="updateBooksData"
+      />
+      <ErrorModal
+        v-else-if="modal.type === 'error'"
+        :data="modal.data"
+        :toggleModal="toggleBookModal"
       />
     </Modal>
     <main>
@@ -29,7 +38,10 @@
             v-show="isAdmin"
             type="button"
             @click="toggleBookModal('new')"
-            >Add Book
+            >
+              <font-awesome-icon
+                :icon="['fas', 'plus']"
+              />
           </button>
         </div>
         <MobileYearSectionNav
@@ -59,12 +71,14 @@ import MobileYearSectionNav from '@/components/MobileYearSectionNav.vue';
 import Modal from '@/components/Modal.vue';
 import NewBookModal from '@/components/NewBookModal.vue';
 import EditBookModal from '@/components/EditBookModal.vue';
+import ErrorModal from '@/components/ErrorModal.vue';
 import Api from '@/util/Api';
 
 export default {
   components: {
     BooksTotalSummary,
     EditBookModal,
+    ErrorModal,
     MobileYearSectionNav,
     Modal,
     NavBar,
@@ -115,13 +129,13 @@ export default {
       }
     },
     updateBooksData(newData) {
-      const clone = [...this.data];
-      const existingIdx = clone.findIndex((d) => d.id === newData.id);
-      if (existingIdx === -1) clone.push(newData);
+      // const clone = [...this.data];
+      const existingIdx = this.data.findIndex((d) => d.id === newData.id);
+      if (existingIdx === -1) this.data.unshift(newData);
       else {
-        clone[existingIdx] = newData;
+        this.data[existingIdx] = newData;
       }
-      this.data = clone;
+      // this.data = clone;
     },
     updateOpenIdx(year) {
       const yearIdx = this.years.indexOf(year);

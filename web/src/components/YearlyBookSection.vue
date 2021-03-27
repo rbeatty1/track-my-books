@@ -20,7 +20,7 @@
         </span>
         <span v-if="activelyReading().length > 0">
           <strong> Currently Reading: </strong>
-          {{ activelyReading()[0].title }}
+          {{ activelyReading() }}
         </span>
       </span>
     </header>
@@ -70,7 +70,12 @@ export default {
   },
   methods: {
     activelyReading() {
-      return getCurrentlyReading(this.booksData);
+      const activelyReading = getCurrentlyReading(this.booksData);
+      if (activelyReading.length === 0) return activelyReading;
+      const string = activelyReading.length > 1
+        ? activelyReading.map((b) => b.title).join(', ')
+        : activelyReading[0].title;
+      return string;
     },
     getActiveBookCards() {
       // book nav btns are not 0-indexed

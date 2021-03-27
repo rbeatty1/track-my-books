@@ -1,0 +1,73 @@
+#new-book-modal {
+  form {
+    background-color: #dfdfdf;
+    box-shadow: 2px 2px 4px 1px rgba(#aaa, .5);
+    display: flex;
+    flex-flow: column;
+    margin: 1rem auto;
+    padding: 0.5rem 1.5rem;
+    text-align: left;
+    width: 75%;
+
+
+    label, select {
+      margin: 0.5rem 0;
+    }
+
+    label {
+      align-items: center;
+      display: flex;
+      width: 100%;
+
+      input {
+        background-color: $primary-yellow-light;
+        border: none;
+        box-shadow: 1px 1px 4px 0 rgba($primary-green, 0.4);
+        color: $primary-green-dark;
+        flex-grow: 1;
+        font-family: 'Oswald', Arial, Helvetica, sans-serif;
+        font-size: 1.1rem;
+        padding: 0.5rem 0.25rem;
+        // width: ;
+      }
+
+      span {
+        color: $primary-green-dark;
+        font-size: 1.25rem;
+        margin-right: 0.75rem;
+      }
+    }
+
+    select {
+      background-color: $primary-yellow-light;
+      border: none;
+      color: $primary-green-dark;
+      flex-grow: 1;
+      font-family: 'Oswald', Arial, Helvetica, sans-serif;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.25rem;
+
+      option {
+        background-color: darken($primary-yellow-light, 5);
+
+      }
+
+    }
+  }
+
+  button {
+    background-color: $primary-green-dark;
+    border: none;
+    box-shadow: 0 3px 6px 1px rgba(black, .2);
+    color: white;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem auto;
+    padding: 0.25rem 2rem;
+
+    &:hover {
+      background-color: $primary-green;
+    }
+  }
+}
