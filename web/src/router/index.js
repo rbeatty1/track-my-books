@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Landing from '../views/Landing.vue';
 import Books from '../views/Books.vue';
 import Vocab from '../views/Vocab.vue';
+import Admin from '../views/Admin.vue';
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/vocabulary',
     name: 'Vocab',
     component: Vocab,
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
   },
 ];
 
