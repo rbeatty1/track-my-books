@@ -97,7 +97,7 @@ export default {
         }
       };
       const bookData = { ...this.data };
-      bookData.end = this.endDate;
+      bookData.end = new Date(this.endDate);
       bookData.rating = this.rating;
       new ApiWrapper({ endpoint: 'books' })
         .postData(

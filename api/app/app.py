@@ -31,7 +31,12 @@ def check_auth_token(auth_token):
 #books
 @api.route(base_route+"books/", methods=["GET", "POST", "PATCH"])
 def books_endpoint():
-    args = request.args
+    args = {
+        'id': request.args.get('book_id'),
+        'title': request.args.get('title'),
+        'author': request.args.get('author'),
+        'genre': request.args.get('genre'),
+    }
     if request.method == "GET":
         payload = books_adapter.select(args) 
         return json.dumps(payload, indent=2, sort_keys=True, default=str)
@@ -53,12 +58,18 @@ def books_endpoint():
 #vocab
 @api.route(base_route+"vocab/", methods=["GET"])
 def vocab_methods():
-    args = request.args
+    args = {
+        'id': request.args.get('word_id'),
+        'word': request.args.get('word'),
+        'type': request.args.get('type'),
+        'title': request.args.get('title'),
+        'genre': request.args.get('genre'),
+    }
     if request.method == "GET":
         payload = vocab_adapter.select(args)
         return json.dumps(payload, indent=2, sort_keys=True, default=str)
     else:
-        print(args.get("action"))
+        print(request.args.get("action"))
 
 @api.route(base_route + "login/", methods=["POST", "GET"])
 @cross_origin()
