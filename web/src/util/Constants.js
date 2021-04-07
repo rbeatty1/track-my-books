@@ -1,5 +1,3 @@
-import { placeHolder } from './Helpers';
-
 const VOCAB_GROUP_TYPES = {
   GENRE: {
     code: 0,
@@ -17,7 +15,16 @@ const VOCAB_GROUP_TYPES = {
     label: 'Word Type',
   },
 };
-
+const BOOK_GENRES = [
+  'Biography',
+  'Fantasy',
+  'Historical Fiction',
+  'Horror',
+  'Memoir',
+  'Non Fiction',
+  'Science Fiction',
+  'Thriller',
+];
 const VOCAB_CHART_OPTIONS = {
   area: {
     chart: {
@@ -81,7 +88,7 @@ const VOCAB_CHART_OPTIONS = {
   },
 };
 export {
+  BOOK_GENRES,
   VOCAB_CHART_OPTIONS,
   VOCAB_GROUP_TYPES,
-  placeHolder,
 };

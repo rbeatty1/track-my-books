@@ -15,6 +15,27 @@
     }
   }
 
+  #modal-bg{
+    &:not(.error-modal){
+      #modal header {
+        background-color: $primary-yellow-light;
+        color: $primary-yellow-dark;
+      }
+    }
+
+    &.error-modal{
+      #modal header{
+        background-color: $primary-red-light;
+        color: $primary-red;
+      }
+    }
+
+    #modal header{
+      font-size: 1.25rem;
+    }
+
+  }
+
   main{
     background-color: $primary-yellow-light;
     display: flex;

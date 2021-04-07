@@ -24,24 +24,9 @@
           >
         </label>
       </span>
-      <span>
-        <input type="number" v-show="false" v-model="rating">
-        <font-awesome-icon
-          :class="[rating === 1 ? 'disabled' : '']"
-          @click="adjustRating('decrease')"
-          :icon="['fas', 'minus']"
-        />
-        <font-awesome-icon
-          v-for="i of rating"
-          :key="i"
-          :icon="['fas', 'star']"
-        />
-        <font-awesome-icon
-          :class="[rating === 5 ? 'disabled' : '']"
-          @click="adjustRating('increase')"
-          :icon="['fas', 'plus']"
-        />
-      </span>
+      <BookRatingInput
+        :propogateRatingValue="setRating"
+      />
       <button
         v-show="rating > 0 && endDate !== null"
         type="button"
@@ -53,8 +38,12 @@
 
 <script>
 import ApiWrapper from '../util/Api';
+import BookRatingInput from './BookRatingInput.vue';
 
 export default {
+  components: {
+    BookRatingInput,
+  },
   props: {
     data: Object,
     toggleModal: Function,
@@ -67,10 +56,6 @@ export default {
     };
   },
   methods: {
-    adjustRating(direction) {
-      if (direction === 'increase' && this.rating !== 5) this.rating += 1;
-      if (direction === 'decrease' && this.rating !== 1) this.rating -= 1;
-    },
     getFormattedDateString(date) {
       return new Date(date)
         .toLocaleDateString(
@@ -84,9 +69,12 @@ export default {
       const date = startDate.getDate();
       return `${startDate.getFullYear()}-${month < 10 ? `0${month}` : month}-${date < 10 ? `0${date}` : date}`;
     },
+    setRating(rating) {
+      this.rating = rating;
+    },
     submitEdits() {
       const failureFn = (res) => {
-        this.toggleModal('error', res);
+        this.toggleModal('error', res, true);
       };
       const successFn = (res) => {
         if (res.status_code === 200) {

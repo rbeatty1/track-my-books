@@ -15,35 +15,6 @@
   form {
     display: flex;
     flex-flow: column;
-    
-    svg.disabled {
-      color: #aaa;
-      cursor: not-allowed;
-    }
-
-    .fa-star {
-      color: $primary-yellow;
-    }
-
-    .fa-minus {
-      color: $primary-red;
-      cursor: pointer;
-      margin-right: 0.5rem;
-
-      &:hover:not(.disabled) {
-        color: lighten($color: $primary-red, $amount: 10);
-      }
-    }
-
-    .fa-plus {
-      color: $primary-green;
-      cursor: pointer;
-      margin-left: 0.5rem;
-
-      &:hover:not(.disabled) {
-        color: lighten($color: $primary-green, $amount: 10);
-      }
-    }
 
     button {
       background-color: $primary-green-dark;

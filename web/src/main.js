@@ -4,6 +4,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBook,
   faHeadphones,
+  faInfoCircle,
   faMinus,
   faPencilAlt,
   faPlus,
@@ -19,6 +20,7 @@ import router from './router';
 
 library.add(faBook);
 library.add(faHeadphones);
+library.add(faInfoCircle);
 library.add(faMinus);
 library.add(faPencilAlt);
 library.add(faPlus);

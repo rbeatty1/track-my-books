@@ -43,6 +43,10 @@
     </aside>
   </div>
   <aside v-else>
+    <font-awesome-icon
+      @click="toggleVocabModal('vocab-info')"
+      :icon="['fas', 'info-circle']"
+    />
     <select
       @change="updateFilterTypeHandler"
     >
@@ -59,13 +63,13 @@
         :selected="2 === filterType.code"
       >Word Type</option>
     </select>
-      <button
-        @click="updateFilterValue(val)"
-        v-for='val in getUniqueGroupValues()'
-        :key='val'
-        :class="[val === selectedFilterValue ? 'active' : '']"
-        type="button"
-      >{{ val  }}</button>
+    <button
+      @click="updateFilterValue(val)"
+      v-for='val in getUniqueGroupValues()'
+      :key='val'
+      :class="[val === selectedFilterValue ? 'active' : '']"
+      type="button"
+    >{{ val  }}</button>
   </aside>
 </template>
 
@@ -79,6 +83,7 @@ export default {
     mobileFiltersActive: Boolean,
     selectedFilterValue: String,
     toggleMobileFilters: Function,
+    toggleVocabModal: Function,
     updateFilterTypeAction: Function,
     updateFilterValue: Function,
   },

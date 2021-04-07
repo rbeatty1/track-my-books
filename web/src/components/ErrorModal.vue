@@ -1,5 +1,8 @@
 <template>
-  <h1>{{ data.msg }}</h1>
+  <div>
+    <h3>Uh oh! Something went wrong.</h3>
+    <h5>{{ data.msg }}</h5>
+  </div>
 </template>
 
 <script>

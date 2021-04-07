@@ -15,10 +15,25 @@
     }
   }
 
-  #modal header{
-    background-color: $primary-green-light;
-    color: $primary-green;
-    font-size: 1.25rem;
+  #modal-bg{
+    &:not(.error-modal){
+      #modal header {
+        background-color: $primary-green-light;
+        color: $primary-green;
+      }
+    }
+
+    &.error-modal{
+      #modal header{
+        background-color: $primary-red-light;
+        color: $primary-red;
+      }
+    }
+
+    #modal header{
+      font-size: 1.25rem;
+    }
+
   }
 
   main{
@@ -30,6 +45,7 @@
 
       #open-book-modal {
         background-color: $primary-green-dark;
+        border: none;
         border-radius: 5px;
         color: white;
         cursor: pointer;
@@ -39,6 +55,7 @@
   
         &:hover {
           background-color: lighten($primary-green-dark, 5);
+          box-shadow: 1px 4px 8px 0 rgba(black, 0.25);
         }
       }
 

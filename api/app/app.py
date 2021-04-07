@@ -29,7 +29,7 @@ def check_auth_token(auth_token):
         return False
 
 #books
-@api.route(base_route+"books/", methods=["GET", "POST", "PATCH"])
+@api.route(base_route+"books/", methods=["GET", "PUT", "PATCH"])
 def books_endpoint():
     args = {
         'id': request.args.get('book_id'),
@@ -51,10 +51,26 @@ def books_endpoint():
                     'status_code' : 200,
                     'data': [updated]
                 }
-                return json.dumps(payload, indent=2)
+                return json.dumps(payload, indent=2, default=str)
         except Exception as e:
             print(e)
             return json.dumps({ 'status_code': 400, 'msg': 'Failed to update data.'})
+    
+    elif request.method == "PUT":
+        try:
+            valid_auth = check_auth_token(request.headers['authorization'].split(' ')[1])
+            if valid_auth is False:
+                return json.dumps({ 'status_code': 400, 'msg': 'Invalid authorization. Log in and try again'})
+            else:
+                new_book = books_adapter.create(request.json)
+                payload = {
+                    'status_code' : 200,
+                    'data': new_book
+                }
+                return json.dumps(payload, indent=2, default=str)
+        except Exception as e:
+            print(e)
+            return json.dumps({ 'status_code': 400, 'msg': 'Failed to create new book.'})
 #vocab
 @api.route(base_route+"vocab/", methods=["GET"])
 def vocab_methods():
