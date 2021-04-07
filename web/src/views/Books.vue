@@ -5,7 +5,11 @@
       :toggleModal="toggleBookModal"
       :title="modal.type === 'new'
         ? 'New Book'
-        : 'Edit Book'"
+        : modal.type === 'edit'
+        ? 'Edit Book'
+        : modal.type === 'error'
+        ? 'Error'
+        : ''"
       v-show="modal.open"
       :class="`${modal.type}-modal`"
     >
@@ -111,9 +115,9 @@ export default {
         || (!b.end && new Date(b.start).getFullYear() === year));
       return filtered.sort((a, b) => (a.end && b.end) && new Date(a.end) < new Date(b.end));
     },
-    toggleBookModal(type, data) {
+    toggleBookModal(type, data, isOpen = !this.modal.open) {
       this.modal = {
-        open: !this.modal.open,
+        open: isOpen,
         type,
         data,
       };

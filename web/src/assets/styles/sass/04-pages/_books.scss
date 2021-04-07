@@ -15,10 +15,25 @@
     }
   }
 
-  #modal header{
-    background-color: $primary-green-light;
-    color: $primary-green;
-    font-size: 1.25rem;
+  #modal-bg{
+    &:not(.error-modal){
+      #modal header {
+        background-color: $primary-green-light;
+        color: $primary-green;
+      }
+    }
+
+    &.error-modal{
+      #modal header{
+        background-color: $primary-red-light;
+        color: $primary-red;
+      }
+    }
+
+    #modal header{
+      font-size: 1.25rem;
+    }
+
   }
 
   main{

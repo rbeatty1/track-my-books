@@ -74,7 +74,7 @@ export default {
     },
     submitEdits() {
       const failureFn = (res) => {
-        this.toggleModal('error', res);
+        this.toggleModal('error', res, true);
       };
       const successFn = (res) => {
         if (res.status_code === 200) {

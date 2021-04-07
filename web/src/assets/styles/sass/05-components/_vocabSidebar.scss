@@ -20,12 +20,14 @@
 
   }
   aside{
+    align-items: center;
     background-color: $primary-red-light;
     display: flex;
     height: 95%;
     flex-flow: column;
     margin: 1rem;
     overflow-y: auto;
+    padding-top: 1rem;
     width: 15%;
 
     header{
@@ -40,7 +42,17 @@
         font-size: 1.5rem;
       }
     }
-  
+
+    svg{
+      color: $primary-red-dark;
+      cursor: pointer;
+      font-size: 1.25rem;
+
+      &:hover{
+        box-shadow: 1px 2px 2px 0 rgba(200,200,200, .5);
+        color: #444;
+      }
+    }
     select {
       color: #999;
       font-family: Oswald, Arial, Helvetica, sans-serif;

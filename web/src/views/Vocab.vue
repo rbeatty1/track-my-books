@@ -1,6 +1,18 @@
 <template>
   <div class='page-container' id='vocab-page'>
     <NavBar/>
+    <Modal
+      :toggleModal="toggleVocabModal"
+      :title="modal.type === 'vocab-info'
+        ? 'Vocabulary Data Disclaimer'
+        : ''"
+      v-show="modal.open"
+      :class="`${modal.type}-modal`"
+    >
+      <VocabDisclaimerModal
+        v-if="modal.type === 'vocab-info'"
+      />
+    </Modal>
     <LoadingIndicator v-if='!loaded'/>
     <main v-else>
       <button
@@ -13,6 +25,7 @@
         :mobileFiltersActive='mobileFiltersActive'
         :selectedFilterValue="selectedFilterValue"
         :toggleMobileFilters="toggleMobileFilters"
+        :toggleVocabModal="toggleVocabModal"
         :updateFilterTypeAction="updateFilterType"
         :updateFilterValue="updateFilterValue"
         :vocabData='data'
@@ -44,8 +57,10 @@
 </template>
 
 <script>
+import Modal from '@/components/Modal.vue';
 import NavBar from '@/components/NavBar.vue';
 import VocabChart from '@/components/VocabChart.vue';
+import VocabDisclaimerModal from '@/components/VocabDisclaimerModal.vue';
 import VocabSidebar from '@/components/VocabSidebar.vue';
 import VocabWordList from '@/components/VocabWordList.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
@@ -55,8 +70,10 @@ import Api from '@/util/Api';
 export default {
   components: {
     LoadingIndicator,
+    Modal,
     NavBar,
     VocabChart,
+    VocabDisclaimerModal,
     VocabSidebar,
     VocabWordList,
   },
@@ -69,6 +86,7 @@ export default {
       filterType: VOCAB_GROUP_TYPES.GENRE,
       loaded: false,
       mobileFiltersActive: false,
+      modal: { open: false, type: null, data: null },
       selectedFilterValue: 'All',
     };
   },
@@ -89,6 +107,13 @@ export default {
         this.loaded = false;
         this.data = data.results;
       }
+    },
+    toggleVocabModal(type, data, isOpen = !this.modal.open) {
+      this.modal = {
+        open: isOpen,
+        type,
+        data,
+      };
     },
     toggleMobileFilters() {
       this.mobileFiltersActive = !this.mobileFiltersActive;
