@@ -39,6 +39,7 @@
           v-for="b in getActiveBookCards()"
           :key="b.id"
           :data="b"
+          :toggleBookModal="toggleBookModal"
         />
       </div>
     </div>
@@ -58,8 +59,9 @@ export default {
   props: {
     booksData: Array,
     open: Boolean,
-    year: Number,
     updateOpenIdx: Function,
+    toggleBookModal: Function,
+    year: Number,
   },
   data() {
     return {

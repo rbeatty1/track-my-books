@@ -1,0 +1,63 @@
+#admin-page{
+  align-items: center;
+  background-color: $primary-yellow;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  &.success {
+    background-color: $primary-green;
+
+    section {
+      color: $primary-green-dark;
+    }
+  }
+
+  &.failure {
+    background-color: $primary-red;
+
+    section {
+      color: $primary-red-dark;
+    }
+  }
+
+  h1 {
+    font-family: 'Bebas Neue';
+    font-size: 2.5rem;
+  }
+
+  section {
+    background-color: #ccc;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px 2px rgba(black, .4);
+    padding: 3rem;
+
+    form {
+      align-items: center;
+      display: flex;
+      flex-flow: column;
+      font-family: 'Oswald', sans-serif;
+      justify-content: center;
+  
+      input {
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.25rem;
+        margin: 0.25rem 0;
+        padding: 5px;
+      }
+  
+      button {
+        background-color: black;
+        border: none;
+        color: white;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.5rem;
+        margin: 0.5rem;
+        width: 100%;
+      }
+    }
+  }
+
+}

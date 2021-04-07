@@ -8,11 +8,11 @@ class VocabAPI():
         cur.callproc(
             "select_vocab",
             [
-                args.get("word_id"),
-                args.get("word"),
-                args.get("type"),
-                args.get("title"),
-                args.get("genre")
+                args['id'],
+                args["word"],
+                args["type"],
+                args["title"],
+                args["genre"]
             ]
         )
         result = cur.fetchall()

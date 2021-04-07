@@ -1,0 +1,63 @@
+#edit-book-modal{
+  padding-bottom: 0.5rem;
+
+  .modal-body-title {
+    h3{
+      color: $primary-green-dark;
+      font-weight: 100;
+
+      strong {
+        font-weight: 700;
+      }
+    }
+  }
+  
+  form {
+    display: flex;
+    flex-flow: column;
+    
+    svg.disabled {
+      color: #aaa;
+      cursor: not-allowed;
+    }
+
+    .fa-star {
+      color: $primary-yellow;
+    }
+
+    .fa-minus {
+      color: $primary-red;
+      cursor: pointer;
+      margin-right: 0.5rem;
+
+      &:hover:not(.disabled) {
+        color: lighten($color: $primary-red, $amount: 10);
+      }
+    }
+
+    .fa-plus {
+      color: $primary-green;
+      cursor: pointer;
+      margin-left: 0.5rem;
+
+      &:hover:not(.disabled) {
+        color: lighten($color: $primary-green, $amount: 10);
+      }
+    }
+
+    button {
+      background-color: $primary-green-dark;
+      border: none;
+      box-shadow: 0 3px 6px 1px rgba(black, .2);
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin: 1rem auto;
+      padding: 0.25rem 2rem;
+
+      &:hover {
+        background-color: $primary-green;
+      }
+    }
+  };
+}

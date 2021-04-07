@@ -42,12 +42,20 @@
     justify-content: space-around;
     padding: 1rem 0;
     text-align: center;
+   
+    .fa-star{
+      color: $primary-yellow;
+    }
 
-    .book-ratings{
-      .fa-star{
-        color: $primary-yellow;
+    .fa-pencil-alt{
+      color: $primary-green;
+      cursor: pointer;
+
+      &:hover {
+        color: lighten($primary-green, 10)
       }
-  }
+    }
+
   }
 
   @media screen and (max-width: 850px) {
