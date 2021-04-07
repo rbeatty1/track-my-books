@@ -51,6 +51,7 @@
           @click="toggleBookModal('edit', data)"
           :icon="['fas', 'pencil-alt']"
           v-else
+          v-show="isAdmin"
         />
       </div>
     </article>
