@@ -4,6 +4,7 @@ This is a web API to support the application that is built using Flask. Interfac
 ### Database Schema
 
 **Table Name:** books
+
 **Description:** Table to store all information pertaining to books that I have read or am in the process of reading.
 | Column Name | Data Type | Description |
 | ----------- | --------- | ----------- |
@@ -18,6 +19,7 @@ This is a web API to support the application that is built using Flask. Interfac
 | rating | Integer | Personal rating of book from 1 - 5. |
 
 **Table Name:** book_formats
+
 **Description:** Reference table. Coded values for type of format that I consuming the book with.
 | Column Name | Data Type | Description |
 | ----------- | --------- | ----------- |
@@ -25,6 +27,7 @@ This is a web API to support the application that is built using Flask. Interfac
 | desc | String | Friendly description of book format |
 
 **Table Name:** dict
+
 **Description:** Table to store dictionary information for words I've encountered that were unfamiliar to me.
 | Column Name | Data Type | Description |
 | ----------- | --------- | ----------- |
@@ -35,6 +38,7 @@ This is a web API to support the application that is built using Flask. Interfac
 | example | String | Example usage of word per Webster's Dictionary API |
 
 **Table:** users
+
 **Description:** Table to store authentication information. Currently just used to determine whether CRUD operations should be enabled in the UI.
 | Column Name | Data Type | Description |
 | ----------- | --------- | ----------- |
@@ -42,6 +46,7 @@ This is a web API to support the application that is built using Flask. Interfac
 | pass_hash | String | Encrypted password string |
 
 **Table Name:** words
+
 **Description:** Table to store information about the encounter of a word that I was unfamiliar with.
 | Column Name | Data Type | Description |
 | ----------- | --------- | ----------- |
@@ -55,6 +60,7 @@ This is a web API to support the application that is built using Flask. Interfac
 
 ### Books
 `https://api.beattyre.app/books/api/v1/books`
+
 | Parameter | Data Type | Descripton | Usage |
 | ----------- | --------- | --------- | ---- |
 | book_id | Integer  | Unique identifier of desired book record | https://api.beattyre.app/books/api/v1/books?book_id=377 |
